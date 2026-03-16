@@ -48,27 +48,27 @@ export default function Home() {
             <span className="ml-2 text-xs text-zinc-500 font-mono">terminal</span>
           </div>
           <pre className="p-5 font-mono text-[13px] leading-relaxed overflow-x-auto">
-            <code>{`$ aide.sh pull ydwu/jenny
-pulling ydwu/jenny:latest...
-ydwu/jenny:0.1.0
+            <code>{`$ aide.sh search devops
+NAME                              VERSION  AUTHOR  DESCRIPTION
+aide/engineering-devops-automator  0.1.0    aide    Expert DevOps engineer...
+aide/engineering-security-engineer 0.1.0    aide    Application security...
 
-$ aide.sh run ydwu/jenny --name jenny.me
-jenny.me
+$ aide.sh pull aide/engineering-devops-automator
+pulling aide/engineering-devops-automator:latest...
+aide/engineering-devops-automator:0.1.0
 
-$ aide.sh exec -it jenny.me cool courses
-📚 6 courses:
-  正規方法 (EE5122)
-  系統晶片驗證 (EEE5023)
-  機器學習 (EE5184)
+$ aide.sh run aide/engineering-devops-automator --name devops
+devops
 
-$ aide.sh exec -it jenny.me email check
-📬 1042 total | 6 unread (of latest 10)
-🆕 #1036 | "朱士維學務長" <ntudeanstudent@ntu.edu.tw>
-   【衛教推廣】臺大保健中心急救訓練課程
+$ aide.sh exec -it devops deploy staging
+Deploying to staging...
+  terraform plan: 3 resources to add
+  CI pipeline: all checks passed
+  Rolling update: 2/2 pods ready
 
 $ aide.sh ps
-INSTANCE     IMAGE    STATUS   CRON   LAST ACTIVITY
-jenny.me     jenny    active   3      exec: email check → ok`}</code>
+INSTANCE  IMAGE                STATUS   CRON  LAST ACTIVITY
+devops    engineering-devops   active   0     exec: deploy staging → ok`}</code>
           </pre>
         </div>
       </section>
@@ -114,26 +114,29 @@ jenny.me     jenny    active   3      exec: email check → ok`}</code>
         <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-5 font-mono text-[13px] leading-relaxed overflow-x-auto">
           <pre>
             <code>{`[agent]
-name = "jenny"
+name = "devops-bot"
 version = "0.1.0"
-description = "NTU school work agent"
+description = "Infrastructure automation agent"
 
 [persona]
 file = "persona.md"
 
-[skills.cool]
-script = "skills/cool.sh"
-schedule = "0 8 * * *"        # daily scan
-env = ["NTU_COOL_TOKEN"]      # only this secret
+[skills.deploy]
+script = "skills/deploy.sh"
+env = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
 
-[skills.email]
-script = "skills/email.sh"
-schedule = "0 */4 * * *"      # every 4 hours
-env = ["SMTP_USER", "SMTP_PASS", "POP3_HOST"]
+[skills.monitor]
+script = "skills/monitor.sh"
+schedule = "*/5 * * * *"      # every 5 minutes
+env = ["DATADOG_API_KEY"]     # only this secret
+
+[skills.audit]
+script = "skills/audit.sh"
+schedule = "0 9 * * 1"        # weekly Monday 9am
 
 [env]
-required = ["NTU_COOL_TOKEN"]
-optional = ["SMTP_USER", "SMTP_PASS"]`}</code>
+required = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
+optional = ["DATADOG_API_KEY", "SLACK_WEBHOOK"]`}</code>
           </pre>
         </div>
       </section>
@@ -168,22 +171,103 @@ optional = ["SMTP_USER", "SMTP_PASS"]`}</code>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="text-center pb-24 px-6">
-        <h2 className="text-3xl font-bold mb-6">Get started in 30 seconds</h2>
-        <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 font-mono text-sm inline-block text-left">
+      {/* Vault */}
+      <section className="max-w-3xl mx-auto px-6 pb-20">
+        <h2 className="text-2xl font-bold text-center mb-8">Vault: Encrypted Credential Management</h2>
+        <p className="text-center text-zinc-400 mb-8 font-mono text-sm">
+          age-encrypted secrets. Per-skill scoping. Leak detection on push.
+        </p>
+        <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-5 font-mono text-[13px] leading-relaxed overflow-x-auto">
+          <pre>
+            <code>{`$ aide.sh vault set COOL_TOKEN=abc123 SMTP_PASS=secret
+  set COOL_TOKEN
+  set SMTP_PASS
+2 secret(s) stored in vault
+
+$ aide.sh vault status
+vault:    ~/.aide/vault.age (4285 bytes)
+key:      ~/.aide/vault.key
+  permissions: 600 OK
+env vars: 55
+
+$ aide.sh vault rotate
+  old key backed up to vault.key.bak
+vault rotated: new key
+  verified: decrypt with new key OK
+
+$ aide.sh build agents/leaky-bot
+BLOCKED: potential secrets detected:
+  bad.sh:1: possible secret (sk-ant-...)
+Error: Fix leaks before building.`}</code>
+          </pre>
+        </div>
+      </section>
+
+      {/* Hub Stats */}
+      <section className="max-w-3xl mx-auto px-6 pb-20 text-center">
+        <h2 className="text-2xl font-bold mb-4">hub.aide.sh</h2>
+        <p className="text-zinc-400 font-mono text-sm mb-8">
+          Public agent registry. Pull any agent, no login required.
+        </p>
+        <div className="flex justify-center gap-8 font-mono">
           <div>
-            <span className="text-zinc-500">$</span>{" "}
-            <span className="text-emerald-400">curl -fsSL https://hub.aide.sh/install | bash</span>
+            <div className="text-3xl font-bold text-emerald-400">35+</div>
+            <div className="text-sm text-zinc-500">agents</div>
           </div>
-          <div className="mt-1">
-            <span className="text-zinc-500">$</span>{" "}
-            aide.sh run ydwu/jenny --name my-agent
+          <div>
+            <div className="text-3xl font-bold text-emerald-400">9</div>
+            <div className="text-sm text-zinc-500">categories</div>
           </div>
-          <div className="mt-1">
-            <span className="text-zinc-500">$</span>{" "}
-            aide.sh exec -it my-agent cool courses
+          <div>
+            <div className="text-3xl font-bold text-emerald-400">MIT</div>
+            <div className="text-sm text-zinc-500">license</div>
           </div>
+        </div>
+        <div className="mt-6 bg-zinc-950 border border-zinc-800 rounded-lg p-4 font-mono text-[13px] text-left inline-block">
+          <code>{`$ aide.sh search devops
+NAME                     VERSION    AUTHOR   DESCRIPTION
+aide/engineering-devops   0.1.0      aide     Expert DevOps engineer...`}</code>
+        </div>
+      </section>
+
+      {/* Getting Started */}
+      <section className="max-w-3xl mx-auto px-6 pb-24">
+        <h2 className="text-3xl font-bold text-center mb-10">Get started in 60 seconds</h2>
+        <div className="bg-zinc-950 border border-zinc-800 rounded-lg overflow-hidden">
+          <div className="flex items-center gap-2 px-4 py-3 bg-zinc-900/50 border-b border-zinc-800">
+            <div className="w-3 h-3 rounded-full bg-red-500/70" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+            <div className="w-3 h-3 rounded-full bg-green-500/70" />
+            <span className="ml-2 text-xs text-zinc-500 font-mono">getting started</span>
+          </div>
+          <pre className="p-5 font-mono text-[13px] leading-relaxed overflow-x-auto">
+            <code>{`# 1. Install
+$ curl -fsSL https://aide.sh/install | bash
+
+# 2. Set up secrets (encrypted, never leaves your machine)
+$ aide.sh vault set OPENAI_API_KEY=sk-... GITHUB_TOKEN=ghp_...
+
+# 3. Pull an agent from the hub
+$ aide.sh pull aide/engineering-devops-automator
+
+# 4. Run it
+$ aide.sh run aide/engineering-devops-automator --name devops
+
+# 5. Use it
+$ aide.sh exec -it devops deploy staging
+
+# 6. Schedule recurring tasks
+$ aide.sh cron add devops "0 9 * * 1" "audit security"
+
+# 7. Check status
+$ aide.sh ps
+INSTANCE  IMAGE               STATUS  CRON
+devops    engineering-devops   active  1
+
+# 8. Build and push your own agent
+$ aide.sh build my-agent/    # scans for leaked secrets
+$ aide.sh push my-agent/     # uploads to hub.aide.sh`}</code>
+          </pre>
         </div>
       </section>
 
