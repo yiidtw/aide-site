@@ -1,27 +1,33 @@
 const hotAgents = [
   {
-    name: "aide/engineering-devops-automator",
-    desc: "DevOps & infra automation",
+    name: "aide/code-review",
+    desc: "Plan, review, QA, ship — based on gstack",
+    author: "garrytan",
   },
   {
-    name: "aide/engineering-security-engineer",
-    desc: "Application security",
+    name: "aide/context",
+    desc: "Curated API docs for coding agents",
+    author: "andrewyng",
   },
   {
-    name: "aide/design-ui-designer",
-    desc: "UI design specialist",
+    name: "aide/devops",
+    desc: "Uptime monitoring, incident response, log analysis",
+    author: "community",
   },
   {
-    name: "aide/testing-api-tester",
-    desc: "API testing & validation",
+    name: "aide/ntu-student",
+    desc: "NTU COOL LMS + mail for university students",
+    author: "ydwu",
   },
   {
-    name: "aide/product-trend-researcher",
-    desc: "Market trend analysis",
+    name: "aide/weather",
+    desc: "Daily weather briefings and severe alerts",
+    author: "community",
   },
   {
-    name: "aide/marketing-growth-hacker",
-    desc: "Growth strategy",
+    name: "aide/qa",
+    desc: "Test generation, regression, coverage reports",
+    author: "community",
   },
 ];
 
@@ -46,7 +52,7 @@ export default function Home() {
           <span className="text-emerald-400">just like Docker.</span>
         </h1>
         <p className="mt-6 text-lg text-zinc-400 max-w-xl font-mono">
-          Package, deploy, and manage AI agents with Agentfile. One CLI.
+          Package, deploy, and manage AI agents with Agentfile. One binary. Works with or without AI.
         </p>
 
         {/* Install command */}
@@ -70,19 +76,39 @@ export default function Home() {
             <span className="ml-2 text-xs text-zinc-500 font-mono">terminal</span>
           </div>
           <pre className="p-5 font-mono text-[13px] leading-relaxed overflow-x-auto">
-            <code>{`$ aide.sh pull aide/engineering-devops-automator
-aide/engineering-devops-automator:0.1.0
+            <code>{`$ aide.sh init my-agent && aide.sh build my-agent/
+building my-agent: 0.1.0
+  sha256: 84023c239020  3.5KB
 
-$ aide.sh run aide/engineering-devops-automator --name devops
-devops
+$ aide.sh run my-agent --name bot
+bot
 
-$ aide.sh exec -it devops audit security
-Scanning 12 services... 3 issues found.
+$ aide.sh exec bot hello world
+Hello, world! I am my-agent.
 
-$ aide.sh ps
-INSTANCE  IMAGE               STATUS  CRON
-devops    engineering-devops   active  0`}</code>
+$ aide.sh exec bot                    # skill discovery
+bot (my-agent:0.1.0)
+Skills:
+  hello [name]    A greeting skill
+
+$ aide.sh dash                        # web dashboard
+Dashboard running at http://localhost:3939`}</code>
           </pre>
+        </div>
+      </section>
+
+      {/* Dashboard Screenshot */}
+      <section className="max-w-4xl mx-auto px-6 pb-20">
+        <h2 className="text-2xl font-bold text-center mb-4">Built-in Observability</h2>
+        <p className="text-center text-zinc-400 mb-8 font-mono text-sm">
+          aide.sh dash — monitor skills, cron, usage, and logs in one place
+        </p>
+        <div className="rounded-lg border border-zinc-800 overflow-hidden">
+          <img
+            src="/dash.png"
+            alt="aide.sh dashboard showing agent instances, skills, cron jobs, usage analytics, and logs"
+            className="w-full"
+          />
         </div>
       </section>
 
@@ -100,7 +126,7 @@ devops    engineering-devops   active  0`}</code>
               </h3>
               <p className="text-sm text-zinc-300 mb-3">{agent.desc}</p>
               <p className="text-xs text-zinc-600">
-                Based on AI-Specialists-Agency &middot; MIT
+                by {agent.author} &middot; MIT
               </p>
             </div>
           ))}
@@ -110,7 +136,7 @@ devops    engineering-devops   active  0`}</code>
             href="https://hub.aide.sh"
             className="text-sm font-mono text-emerald-400 hover:text-emerald-300 transition"
           >
-            Browse all 35+ agents on hub.aide.sh &rarr;
+            Browse agents on hub.aide.sh &rarr;
           </a>
         </div>
       </section>
@@ -118,11 +144,11 @@ devops    engineering-devops   active  0`}</code>
       {/* Footer */}
       <footer className="border-t border-zinc-800 py-8 text-center text-sm text-zinc-500 font-mono">
         <div className="flex justify-center gap-6 mb-4">
+          <a href="https://docs.aide.sh" className="hover:text-white transition">Docs</a>
           <a href="https://github.com/yiidtw/aide" className="hover:text-white transition">GitHub</a>
           <a href="https://hub.aide.sh" className="hover:text-white transition">Hub</a>
-          <a href="#install" className="hover:text-white transition">Install</a>
         </div>
-        MIT License — aide.sh
+        MIT License &mdash; aide.sh
       </footer>
     </main>
   );
