@@ -124,22 +124,19 @@ bot       devops   active  2`}</code>
         <h2 className="text-2xl font-bold text-center mb-10">Hot Agents</h2>
         <div className="grid md:grid-cols-3 gap-4">
           {hotAgents.map((agent) => (
-            <div
+            <a
               key={agent.name}
-              className="rounded-lg border border-zinc-800 bg-zinc-950 p-5"
+              href={agent.sourceUrl || "https://hub.aide.sh"}
+              className="rounded-lg border border-zinc-800 bg-zinc-950 p-5 block hover:border-zinc-600 transition"
             >
               <h3 className="font-mono text-sm font-bold text-emerald-400 mb-1">
                 {agent.name}
               </h3>
               <p className="text-sm text-zinc-300 mb-3">{agent.desc}</p>
-              {agent.sourceUrl ? (
-                <a href={agent.sourceUrl} className="text-xs text-zinc-500 hover:text-zinc-400 transition">
-                  source: {agent.source}
-                </a>
-              ) : (
-                <span className="text-xs text-zinc-600">{agent.source}</span>
-              )}
-            </div>
+              <span className="text-xs text-zinc-600">
+                {agent.source}
+              </span>
+            </a>
           ))}
         </div>
       </section>
