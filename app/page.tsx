@@ -79,27 +79,27 @@ export default function Home() {
             <span className="ml-2 text-xs text-zinc-500 font-mono">terminal</span>
           </div>
           <pre className="p-5 font-mono text-[13px] leading-relaxed overflow-x-auto">
-            <code>{`$ aide.sh pull aide/devops
-aide/devops:0.1.0
+            <code>{`$ aide.sh pull aide/github-reviewer
+aide/github-reviewer:0.1.0
 
-$ aide.sh run aide/devops --name bot
-bot
+$ aide.sh run aide/github-reviewer --name reviewer
+reviewer
 
-$ aide.sh exec bot check-uptime
-Scanning 3 services... all healthy.
+$ aide.sh exec reviewer pr list
+#41  feat: add cron scheduler       OPEN
+#38  docs: update README            OPEN
 
-$ aide.sh exec bot                    # what can this agent do?
-bot (devops:0.1.0)
-  SRE agent — uptime, incidents, log analysis
+$ aide.sh exec reviewer diff
+=== Diff: feature/auth vs main ===
+ src/auth.rs   | 42 +++++++++
+ src/main.rs   |  3 +
+ 2 files changed, 45 insertions(+)
 
-Skills:
-  check-uptime [service]     Check uptime and response times
-  incident-response [id]     Automated triage and escalation
-  log-analysis [service]     Analyze logs for anomalies
-
-$ aide.sh ps
-INSTANCE  IMAGE    STATUS  CRON
-bot       devops   active  2`}</code>
+$ aide.sh exec reviewer notifications
+3 unread:
+  PullRequest: feat: add cron scheduler
+  Issue: Bug in vault encryption
+  Release: v0.1.0`}</code>
           </pre>
         </div>
       </section>
