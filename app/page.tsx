@@ -63,7 +63,7 @@ export default function Home() {
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 font-mono text-sm text-left">
             <span className="text-zinc-500">$</span>{" "}
             <span className="text-emerald-400 select-all">
-              cargo install aide-sh
+              curl -fsSL https://aide.sh/install | bash
             </span>
           </div>
         </div>
