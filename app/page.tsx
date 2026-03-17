@@ -39,7 +39,7 @@ export default function Home() {
         <span className="font-mono text-lg font-bold tracking-tight">aide.sh</span>
         <div className="flex gap-6 text-sm text-zinc-400 font-mono">
           <a href="https://docs.aide.sh" className="hover:text-white transition">Docs</a>
-          <a href="https://hub.aide.sh" className="hover:text-white transition">Hub</a>
+          <a href="https://registry.aide.sh" className="hover:text-white transition">Registry</a>
           <a href="https://github.com/yiidtw/aide" className="hover:text-white transition">GitHub</a>
         </div>
       </nav>
@@ -126,7 +126,7 @@ $ aide.sh exec reviewer notifications
           {hotAgents.map((agent) => (
             <a
               key={agent.name}
-              href={agent.sourceUrl || "https://hub.aide.sh"}
+              href={agent.sourceUrl || "https://registry.aide.sh"}
               className="rounded-lg border border-zinc-800 bg-zinc-950 p-5 block hover:border-zinc-600 transition"
             >
               <h3 className="font-mono text-sm font-bold text-emerald-400 mb-1">
@@ -146,7 +146,7 @@ $ aide.sh exec reviewer notifications
         <div className="flex justify-center gap-6 mb-4">
           <a href="https://docs.aide.sh" className="hover:text-white transition">Docs</a>
           <a href="https://github.com/yiidtw/aide" className="hover:text-white transition">GitHub</a>
-          <a href="https://hub.aide.sh" className="hover:text-white transition">Hub</a>
+          <a href="https://registry.aide.sh" className="hover:text-white transition">Registry</a>
         </div>
         MIT License &mdash; aide.sh
       </footer>
