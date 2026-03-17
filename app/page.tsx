@@ -31,7 +31,7 @@ export default function Home() {
           <br />
           One binary. Works with or without AI.
         </p>
-        <p className="mt-2 text-xs text-zinc-600 font-mono">v0.1.0</p>
+        <p className="mt-2 text-xs text-zinc-600 font-mono">v0.3.0</p>
 
         {/* Install command */}
         <div id="install" className="mt-8 w-full max-w-lg">
@@ -74,7 +74,7 @@ $ aide.sh exec reviewer notifications
 3 unread:
   PullRequest: feat: add cron scheduler
   Issue: Bug in vault encryption
-  Release: v0.1.0`}</code>
+  Release: v0.3.0`}</code>
           </pre>
         </div>
       </section>
