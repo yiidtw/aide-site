@@ -1,33 +1,39 @@
 const hotAgents = [
   {
     name: "aide/code-review",
-    desc: "Plan, review, QA, ship — based on gstack",
-    author: "garrytan",
+    desc: "Plan, review, QA, ship",
+    source: "garrytan/gstack",
+    sourceUrl: "https://github.com/garrytan/gstack",
   },
   {
     name: "aide/context",
-    desc: "Curated API docs for coding agents",
-    author: "andrewyng",
+    desc: "API docs for coding agents",
+    source: "andrewyng/context-hub",
+    sourceUrl: "https://github.com/andrewyng/context-hub",
   },
   {
     name: "aide/devops",
-    desc: "Uptime monitoring, incident response, log analysis",
-    author: "community",
+    desc: "Uptime, incidents, log analysis",
+    source: "community",
+    sourceUrl: "",
   },
   {
     name: "aide/ntu-student",
-    desc: "NTU COOL LMS + mail for university students",
-    author: "ydwu",
+    desc: "University LMS + mail",
+    source: "ydwu",
+    sourceUrl: "https://github.com/yiidtw/aide",
   },
   {
     name: "aide/weather",
-    desc: "Daily weather briefings and severe alerts",
-    author: "community",
+    desc: "Forecast + severe alerts",
+    source: "community",
+    sourceUrl: "",
   },
   {
     name: "aide/qa",
-    desc: "Test generation, regression, coverage reports",
-    author: "community",
+    desc: "Test, regression, coverage",
+    source: "community",
+    sourceUrl: "",
   },
 ];
 
@@ -101,12 +107,12 @@ Dashboard running at http://localhost:3939`}</code>
       <section className="max-w-4xl mx-auto px-6 pb-20">
         <h2 className="text-2xl font-bold text-center mb-4">Built-in Observability</h2>
         <p className="text-center text-zinc-400 mb-8 font-mono text-sm">
-          aide.sh dash — monitor skills, cron, usage, and logs in one place
+          aide.sh dash &mdash; monitor skills, cron, usage, and logs in one place
         </p>
         <div className="rounded-lg border border-zinc-800 overflow-hidden">
           <img
             src="/dash.png"
-            alt="aide.sh dashboard showing agent instances, skills, cron jobs, usage analytics, and logs"
+            alt="aide.sh dashboard"
             className="w-full"
           />
         </div>
@@ -114,30 +120,29 @@ Dashboard running at http://localhost:3939`}</code>
 
       {/* Hot Agents */}
       <section className="max-w-5xl mx-auto px-6 pb-20">
-        <h2 className="text-2xl font-bold text-center mb-10">Hot Agents</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">Hot Agents</h2>
+        <p className="text-center text-zinc-400 mb-8 font-mono text-sm">
+          aide.sh pull aide/code-review &amp;&amp; aide.sh run aide/code-review --name reviewer
+        </p>
         <div className="grid md:grid-cols-3 gap-4">
           {hotAgents.map((agent) => (
             <div
               key={agent.name}
               className="rounded-lg border border-zinc-800 bg-zinc-950 p-5"
             >
-              <h3 className="font-mono text-sm font-bold text-emerald-400 mb-2">
+              <h3 className="font-mono text-sm font-bold text-emerald-400 mb-1">
                 {agent.name}
               </h3>
               <p className="text-sm text-zinc-300 mb-3">{agent.desc}</p>
-              <p className="text-xs text-zinc-600">
-                by {agent.author} &middot; MIT
-              </p>
+              {agent.sourceUrl ? (
+                <a href={agent.sourceUrl} className="text-xs text-zinc-500 hover:text-zinc-400 transition">
+                  source: {agent.source}
+                </a>
+              ) : (
+                <span className="text-xs text-zinc-600">{agent.source}</span>
+              )}
             </div>
           ))}
-        </div>
-        <div className="text-center mt-8">
-          <a
-            href="https://hub.aide.sh"
-            className="text-sm font-mono text-emerald-400 hover:text-emerald-300 transition"
-          >
-            Browse agents on hub.aide.sh &rarr;
-          </a>
         </div>
       </section>
 
