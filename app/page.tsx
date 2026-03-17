@@ -18,12 +18,6 @@ const hotAgents = [
     sourceUrl: "",
   },
   {
-    name: "aide/ntu-student",
-    desc: "University LMS + mail",
-    source: "ydwu",
-    sourceUrl: "https://github.com/yiidtw/aide",
-  },
-  {
     name: "aide/weather",
     desc: "Forecast + severe alerts",
     source: "community",
@@ -58,15 +52,18 @@ export default function Home() {
           <span className="text-emerald-400">just like Docker.</span>
         </h1>
         <p className="mt-6 text-lg text-zinc-400 max-w-xl font-mono">
-          Package, deploy, and manage AI agents with Agentfile. One binary. Works with or without AI.
+          Package, deploy, and manage AI agents with Agentfile.
+          <br />
+          One binary. Works with or without AI.
         </p>
+        <p className="mt-2 text-xs text-zinc-600 font-mono">v0.1.0</p>
 
         {/* Install command */}
-        <div id="install" className="mt-10 w-full max-w-lg">
+        <div id="install" className="mt-8 w-full max-w-lg">
           <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 font-mono text-sm text-left">
             <span className="text-zinc-500">$</span>{" "}
             <span className="text-emerald-400 select-all">
-              curl -fsSL https://aide.sh/install | bash
+              cargo install aide-sh
             </span>
           </div>
         </div>
@@ -82,23 +79,27 @@ export default function Home() {
             <span className="ml-2 text-xs text-zinc-500 font-mono">terminal</span>
           </div>
           <pre className="p-5 font-mono text-[13px] leading-relaxed overflow-x-auto">
-            <code>{`$ aide.sh init my-agent && aide.sh build my-agent/
-building my-agent: 0.1.0
-  sha256: 84023c239020  3.5KB
+            <code>{`$ aide.sh pull aide/devops
+aide/devops:0.1.0
 
-$ aide.sh run my-agent --name bot
+$ aide.sh run aide/devops --name bot
 bot
 
-$ aide.sh exec bot hello world
-Hello, world! I am my-agent.
+$ aide.sh exec bot check-uptime
+Scanning 3 services... all healthy.
 
-$ aide.sh exec bot                    # skill discovery
-bot (my-agent:0.1.0)
+$ aide.sh exec bot                    # what can this agent do?
+bot (devops:0.1.0)
+  SRE agent — uptime, incidents, log analysis
+
 Skills:
-  hello [name]    A greeting skill
+  check-uptime [service]     Check uptime and response times
+  incident-response [id]     Automated triage and escalation
+  log-analysis [service]     Analyze logs for anomalies
 
-$ aide.sh dash                        # web dashboard
-Dashboard running at http://localhost:3939`}</code>
+$ aide.sh ps
+INSTANCE  IMAGE    STATUS  CRON
+bot       devops   active  2`}</code>
           </pre>
         </div>
       </section>
@@ -120,10 +121,7 @@ Dashboard running at http://localhost:3939`}</code>
 
       {/* Hot Agents */}
       <section className="max-w-5xl mx-auto px-6 pb-20">
-        <h2 className="text-2xl font-bold text-center mb-4">Hot Agents</h2>
-        <p className="text-center text-zinc-400 mb-8 font-mono text-sm">
-          aide.sh pull aide/code-review &amp;&amp; aide.sh run aide/code-review --name reviewer
-        </p>
+        <h2 className="text-2xl font-bold text-center mb-10">Hot Agents</h2>
         <div className="grid md:grid-cols-3 gap-4">
           {hotAgents.map((agent) => (
             <div
