@@ -32,7 +32,7 @@ export default function Home() {
       <nav className="flex items-center justify-between px-6 py-4 max-w-5xl mx-auto">
         <span className="font-mono text-lg font-bold tracking-tight">aide.sh</span>
         <div className="flex gap-6 text-sm text-zinc-400 font-mono">
-          <a href="#install" className="hover:text-white transition">Install</a>
+          <a href="https://docs.aide.sh" className="hover:text-white transition">Docs</a>
           <a href="https://hub.aide.sh" className="hover:text-white transition">Hub</a>
           <a href="https://github.com/yiidtw/aide" className="hover:text-white transition">GitHub</a>
         </div>
