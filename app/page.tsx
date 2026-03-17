@@ -1,34 +1,9 @@
 const hotAgents = [
-  {
-    name: "aide/code-review",
-    desc: "Plan, review, QA, ship",
-    source: "garrytan/gstack",
-    sourceUrl: "https://github.com/garrytan/gstack",
-  },
-  {
-    name: "aide/context",
-    desc: "API docs for coding agents",
-    source: "andrewyng/context-hub",
-    sourceUrl: "https://github.com/andrewyng/context-hub",
-  },
-  {
-    name: "aide/devops",
-    desc: "Uptime, incidents, log analysis",
-    source: "community",
-    sourceUrl: "",
-  },
-  {
-    name: "aide/weather",
-    desc: "Forecast + severe alerts",
-    source: "community",
-    sourceUrl: "",
-  },
-  {
-    name: "aide/qa",
-    desc: "Test, regression, coverage",
-    source: "community",
-    sourceUrl: "",
-  },
+  { name: "aide/code-review", desc: "Plan, review, QA, ship", by: "garrytan/gstack", ver: "0.1.0" },
+  { name: "aide/context", desc: "API docs for coding agents", by: "andrewyng/context-hub", ver: "0.1.0" },
+  { name: "aide/devops", desc: "Uptime, incidents, log analysis", by: "community", ver: "0.1.0" },
+  { name: "aide/weather", desc: "Forecast + severe alerts", by: "community", ver: "0.1.0" },
+  { name: "aide/qa", desc: "Test, regression, coverage", by: "community", ver: "0.1.0" },
 ];
 
 export default function Home() {
@@ -126,16 +101,17 @@ $ aide.sh exec reviewer notifications
           {hotAgents.map((agent) => (
             <a
               key={agent.name}
-              href={agent.sourceUrl || "https://hub.aide.sh"}
+              href={`https://hub.aide.sh/${agent.name}.html`}
               className="rounded-lg border border-zinc-800 bg-zinc-950 p-5 block hover:border-zinc-600 transition"
             >
               <h3 className="font-mono text-sm font-bold text-emerald-400 mb-1">
                 {agent.name}
               </h3>
               <p className="text-sm text-zinc-300 mb-3">{agent.desc}</p>
-              <span className="text-xs text-zinc-600">
-                {agent.source}
-              </span>
+              <div className="flex justify-between text-xs text-zinc-600">
+                <span>{agent.by}</span>
+                <span>v{agent.ver}</span>
+              </div>
             </a>
           ))}
         </div>
