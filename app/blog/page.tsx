@@ -1,0 +1,45 @@
+const posts = [
+  {
+    slug: "write-an-aide-instead",
+    date: "2026-03-19",
+    title: "Write a skill? Write an aide instead.",
+    preview: "Some skills I call every day. Instead of letting Claude hunt for the right one, I gave each a dedicated agent running 24/7 in the background.",
+  },
+];
+
+export default function Blog() {
+  return (
+    <main className="min-h-screen bg-black text-white">
+      <nav className="flex items-center justify-between px-6 py-4 max-w-3xl mx-auto">
+        <a href="/" className="font-mono text-lg font-bold tracking-tight hover:text-emerald-400 transition">aide.sh</a>
+        <div className="flex gap-6 text-sm text-zinc-400 font-mono">
+          <a href="https://docs.aide.sh" className="hover:text-white transition">Docs</a>
+          <a href="https://hub.aide.sh" className="hover:text-white transition">Hub</a>
+          <a href="/blog" className="text-white">Blog</a>
+          <a href="https://github.com/yiidtw/aide" className="hover:text-white transition">GitHub</a>
+        </div>
+      </nav>
+
+      <section className="max-w-3xl mx-auto px-6 pt-16 pb-20">
+        <h1 className="text-3xl font-bold mb-2">Blog</h1>
+        <p className="text-zinc-500 font-mono text-sm mb-12">Building aide.sh in public. One story per day.</p>
+
+        {posts.map((post) => (
+          <a key={post.slug} href={`/blog/${post.slug}`} className="block mb-8 group">
+            <p className="text-xs text-zinc-600 font-mono mb-1">{post.date}</p>
+            <h2 className="text-xl font-bold group-hover:text-emerald-400 transition mb-2">{post.title}</h2>
+            <p className="text-zinc-400 text-sm">{post.preview}</p>
+          </a>
+        ))}
+      </section>
+
+      <footer className="border-t border-zinc-800 py-8 text-center text-sm text-zinc-500 font-mono max-w-3xl mx-auto">
+        <div className="flex justify-center gap-6 mb-4">
+          <a href="https://x.com/yiidtw" className="hover:text-white transition">Twitter</a>
+          <a href="https://github.com/yiidtw/aide" className="hover:text-white transition">GitHub</a>
+          <a href="https://aide.sh" className="hover:text-white transition">aide.sh</a>
+        </div>
+      </footer>
+    </main>
+  );
+}

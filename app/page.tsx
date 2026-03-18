@@ -15,6 +15,7 @@ export default function Home() {
         <div className="flex gap-6 text-sm text-zinc-400 font-mono">
           <a href="https://docs.aide.sh" className="hover:text-white transition">Docs</a>
           <a href="https://hub.aide.sh" className="hover:text-white transition">Hub</a>
+          <a href="/blog" className="hover:text-white transition">Blog</a>
           <a href="https://github.com/yiidtw/aide" className="hover:text-white transition">GitHub</a>
         </div>
       </nav>
