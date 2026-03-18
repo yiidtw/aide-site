@@ -8,11 +8,11 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "aide.sh — Docker for AI Agents",
+  title: "aide.sh — Deploy AI agents, just like Docker",
   description:
     "Package, deploy, and manage AI agents with Agentfile. Isolated credentials, public registry, Docker-style CLI.",
   openGraph: {
-    title: "aide.sh — Docker for AI Agents",
+    title: "aide.sh — Deploy AI agents, just like Docker",
     description: "Package, deploy, and manage AI agents with Agentfile.",
     url: "https://aide.sh",
   },
