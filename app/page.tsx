@@ -54,23 +54,23 @@ export default function Home() {
             <span className="ml-2 text-xs text-zinc-500 font-mono">terminal</span>
           </div>
           <pre className="p-5 font-mono text-[13px] leading-relaxed overflow-x-auto">
-            <code>{`$ aide.sh pull aide/github-reviewer
+            <code>{`$ aide pull aide/github-reviewer
 aide/github-reviewer:0.1.0
 
-$ aide.sh run aide/github-reviewer --name reviewer
+$ aide run aide/github-reviewer --name reviewer
 reviewer
 
-$ aide.sh exec reviewer pr list
+$ aide exec reviewer pr list
 #41  feat: add cron scheduler       OPEN
 #38  docs: update README            OPEN
 
-$ aide.sh exec reviewer diff
+$ aide exec reviewer diff
 === Diff: feature/auth vs main ===
  src/auth.rs   | 42 +++++++++
  src/main.rs   |  3 +
  2 files changed, 45 insertions(+)
 
-$ aide.sh exec reviewer notifications
+$ aide exec reviewer notifications
 3 unread:
   PullRequest: feat: add cron scheduler
   Issue: Bug in vault encryption
