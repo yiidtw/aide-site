@@ -1,5 +1,11 @@
 const posts = [
   {
+    slug: "vault-v2-and-mcp-fix",
+    date: "2026-03-19",
+    title: "Vault v2: every machine gets its own key.",
+    preview: "Multi-recipient age encryption, git-based sync, and an MCP bug that kept agents invisible. 14 tests, all green.",
+  },
+  {
     slug: "write-an-aide-instead",
     date: "2026-03-19",
     title: "Write a skill? Write an aide instead.",
