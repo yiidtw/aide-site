@@ -1,5 +1,11 @@
 const posts = [
   {
+    slug: "github-driven-agent-workflow",
+    date: "2026-03-20",
+    title: "GitHub-Driven Agent Workflow: your inbox is a repo.",
+    preview: "Killed the inbox poller. GitHub Issues is the message queue now. ETag-based polling, single ticker, zero-restart agent discovery.",
+  },
+  {
     slug: "vault-v2-and-mcp-fix",
     date: "2026-03-19",
     title: "Vault v2: every machine gets its own key.",
