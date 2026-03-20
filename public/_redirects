@@ -1,1 +1,5 @@
 /install https://raw.githubusercontent.com/yiidtw/aide/main/install.sh 301
+/blog/write-an-aide-instead /blog/2026-03-19-write-an-aide-instead 301
+/blog/vault-v2-and-mcp-fix /blog/2026-03-19-vault-v2-and-mcp-fix 301
+/blog/github-driven-agent-workflow /blog/2026-03-20-github-driven-agent-workflow 301
+/blog/an-agent-is-a-repo /blog/2026-03-21-an-agent-is-a-repo 301
