@@ -11,7 +11,7 @@ export default function Post() {
 
       <article className="max-w-3xl mx-auto px-6 pt-16 pb-20">
         <p className="text-xs text-zinc-600 font-mono mb-2">2026-03-20</p>
-        <h1 className="text-3xl font-bold mb-8">GIDAW: your inbox is a repo.</h1>
+        <h1 className="text-3xl font-bold mb-8">GITAW: your inbox is a repo.</h1>
 
         <div className="prose prose-invert prose-sm max-w-none space-y-6 text-zinc-300 leading-relaxed">
 
@@ -36,10 +36,10 @@ export default function Post() {
             GitHub was already the relay. We just weren&apos;t using it.
           </p>
 
-          <h2 className="text-xl font-bold text-white pt-4">The design: GIDAW</h2>
+          <h2 className="text-xl font-bold text-white pt-4">The design: GITAW</h2>
 
           <p>
-            GitHub Issues Driven Agentic Workflow. We call it GIDAW &mdash; sounds
+            Git-based Issue Tracking Agentic Workflow. We call it GITAW &mdash; sounds
             like 知道 (<em>zhīdào</em>, &ldquo;to know&rdquo; in Mandarin). Your agent <em>knows</em>.
             The idea is simple: GitHub Issues <em>is</em> the message queue. The daemon polls GitHub instead of a custom inbox. The full pipeline:
           </p>

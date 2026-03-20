@@ -1,9 +1,15 @@
 const posts = [
   {
+    slug: "an-agent-is-a-repo",
+    date: "2026-03-21",
+    title: "An agent is a repo. GITAW and the occupation/cognition split.",
+    preview: "We killed our registry. Hub = git repo. Agents split into occupation (shareable job) and cognition (personal brain). GITAW with UUID leader election.",
+  },
+  {
     slug: "github-driven-agent-workflow",
     date: "2026-03-20",
-    title: "GIDAW: your inbox is a repo.",
-    preview: "GitHub Issues Driven Agentic Workflow. Killed the inbox poller. GitHub Issues is the message queue. ETag polling, single ticker, zero-restart discovery.",
+    title: "GITAW: your inbox is a repo.",
+    preview: "Git-based Issue Tracking Agentic Workflow. Killed the inbox poller. GitHub Issues is the message queue. ETag polling, single ticker, zero-restart discovery.",
   },
   {
     slug: "vault-v2-and-mcp-fix",
