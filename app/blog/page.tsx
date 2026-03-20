@@ -1,24 +1,24 @@
 const posts = [
   {
-    slug: "an-agent-is-a-repo",
+    slug: "2026-03-21-an-agent-is-a-repo",
     date: "2026-03-21",
     title: "An agent is a repo. GITAW and the occupation/cognition split.",
     preview: "We killed our registry. Hub = git repo. Agents split into occupation (shareable job) and cognition (personal brain). GITAW with UUID leader election.",
   },
   {
-    slug: "github-driven-agent-workflow",
+    slug: "2026-03-20-github-driven-agent-workflow",
     date: "2026-03-20",
     title: "GITAW: your inbox is a repo.",
     preview: "Git-based Issue Tracking Agentic Workflow. Killed the inbox poller. GitHub Issues is the message queue. ETag polling, single ticker, zero-restart discovery.",
   },
   {
-    slug: "vault-v2-and-mcp-fix",
+    slug: "2026-03-19-vault-v2-and-mcp-fix",
     date: "2026-03-19",
     title: "Vault v2: every machine gets its own key.",
     preview: "Multi-recipient age encryption, git-based sync, and an MCP bug that kept agents invisible. 14 tests, all green.",
   },
   {
-    slug: "write-an-aide-instead",
+    slug: "2026-03-19-write-an-aide-instead",
     date: "2026-03-19",
     title: "Write a skill? Write an aide instead.",
     preview: "Some skills I call every day. Instead of letting Claude hunt for the right one, I gave each a dedicated agent running 24/7 in the background.",
