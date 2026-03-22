@@ -1,5 +1,17 @@
 const posts = [
   {
+    slug: "2026-03-22-occupation-cognition-vault",
+    date: "2026-03-22",
+    title: "occupation, cognition, vault: why your agent framework is a protocol, not a library.",
+    preview: "Built a crate-publishing agent. The directory structure revealed three tiers: public skills, private memory, encrypted secrets. No framework does this. aide is a protocol.",
+  },
+  {
+    slug: "2026-03-22-crate-and-citation",
+    date: "2026-03-22",
+    title: "aide.sh is now on crates.io. Here's how to cite it.",
+    preview: "aide-sh v0.5.0 published on crates.io. cargo install aide-sh. BibTeX and CITATION.cff for academic use. Zenodo DOI coming soon.",
+  },
+  {
     slug: "2026-03-21-an-agent-is-a-repo",
     date: "2026-03-21",
     title: "An agent is a repo. GITAW and the occupation/cognition split.",
