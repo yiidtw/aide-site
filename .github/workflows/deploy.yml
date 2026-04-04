@@ -10,6 +10,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install mdbook
+        run: |
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.40/mdbook-v0.4.40-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+          sudo mv mdbook /usr/local/bin/
+
+      - name: Build docs from aide repo
+        run: |
+          git clone --depth=1 https://github.com/yiidtw/aide.git /tmp/aide
+          cd /tmp/aide && mdbook build docs
+          cp -r /tmp/aide/docs/book public/docs
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:

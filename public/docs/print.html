@@ -1,0 +1,1774 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>aide.sh</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-012faf3d.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-7a61c83c.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">aide.sh</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="aidesh"><a class="header" href="#aidesh">aide.sh</a></h1>
+<p><strong>Deploy AI agents, just like Docker.</strong></p>
+<p>aide.sh is a CLI tool for packaging, deploying, and managing AI agents. One Rust binary, no runtime dependencies.</p>
+<h2 id="why-aidesh"><a class="header" href="#why-aidesh">Why aide.sh?</a></h2>
+<ul>
+<li><strong>Docker mental model</strong> — <code>build</code>, <code>run</code>, <code>exec</code>, <code>push</code>, <code>pull</code>. If you know Docker, you know aide.sh.</li>
+<li><strong>Works without AI</strong> — agents are structured skill runners (shell scripts). No LLM required.</li>
+<li><strong>Three execution modes</strong> — ad-hoc (human drives), sub-agent (LLM drives via MCP), standalone (<code>-p</code> flag: agent has its own LLM brain).</li>
+<li><strong>Local-first</strong> — agents run on your machine, secrets stay in your encrypted vault.</li>
+<li><strong>MCP native</strong> — Claude Code, Codex, Gemini can control your agents as subagents.</li>
+</ul>
+<h2 id="quick-taste"><a class="header" href="#quick-taste">Quick taste</a></h2>
+<pre><code class="language-bash"># install
+curl -fsSL https://aide.sh/install | bash
+
+# pull an agent from the hub
+aide pull aide/github-reviewer
+aide run aide/github-reviewer --name reviewer
+
+# use it — no AI needed
+aide exec reviewer pr list
+aide exec reviewer diff
+
+# or let AI decide what to call
+aide exec -p reviewer "are there any PRs that need review?"
+
+# monitor everything
+aide dash
+</code></pre>
+<p><strong>What does <code>-p</code> do?</strong> It gives the agent a brain. Without <code>-p</code>, you call skills directly by name. With <code>-p</code>, an LLM (Claude CLI or local ollama) reads the agent’s persona and skill list, interprets your natural language query, and decides which skills to invoke.</p>
+<h2 id="dashboard"><a class="header" href="#dashboard">Dashboard</a></h2>
+<p><img src="images/dash-demo.png" alt="aide.sh dashboard"></p>
+<p>Built-in observability. See every agent’s skills, cron jobs, usage analytics, and logs — all in one place.</p>
+<h2 id="how-it-works"><a class="header" href="#how-it-works">How it works</a></h2>
+<pre><code>Agentfile.toml          ← agent manifest (like Dockerfile)
+├── persona.md          ← agent personality
+├── skills/*.sh         ← executable capabilities (shell scripts)
+├── seed/               ← initial knowledge
+└── [limits]            ← timeout, token budget, retry policy
+
+aide build agent/    → .tar.gz archive
+aide push agent/     → upload to hub
+aide pull user/agent → download from hub
+aide run user/agent  → create instance
+aide exec inst skill → run a skill
+aide up              → daemon: cron + dashboard
+</code></pre>
+<h2 id="next-steps"><a class="header" href="#next-steps">Next steps</a></h2>
+<ul>
+<li><a href="#installation">Installation</a> — get the binary</li>
+<li><a href="#quick-start">Quick Start</a> — build your first agent in 5 minutes</li>
+<li><a href="#concepts">Concepts</a> — images, instances, skills, vault</li>
+<li><a href="#architecture-agent-execution-modes">Execution Modes</a> — ad-hoc, sub-agent, standalone</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>aide.sh ships as a single static binary. No runtime dependencies.</p>
+<h2 id="one-line-install-recommended"><a class="header" href="#one-line-install-recommended">One-line install (recommended)</a></h2>
+<pre><code class="language-bash">curl -fsSL https://aide.sh/install | bash
+</code></pre>
+<p>This detects your OS and architecture, downloads the latest release, and places the binary at <code>~/.local/bin/aide</code>.</p>
+<h2 id="cargo-install"><a class="header" href="#cargo-install">Cargo install</a></h2>
+<p>If you have a Rust toolchain:</p>
+<pre><code class="language-bash">cargo install aide
+</code></pre>
+<h2 id="build-from-source"><a class="header" href="#build-from-source">Build from source</a></h2>
+<pre><code class="language-bash">git clone https://github.com/AIDEdotsh/aide.git
+cd aide
+cargo build --release
+cp target/release/aide ~/.local/bin/
+</code></pre>
+<h2 id="verify"><a class="header" href="#verify">Verify</a></h2>
+<pre><code class="language-bash">$ aide --version
+aide 0.1.0
+</code></pre>
+<p>Make sure <code>~/.local/bin</code> is in your <code>PATH</code>:</p>
+<pre><code class="language-bash">export PATH="$HOME/.local/bin:$PATH"
+</code></pre>
+<h2 id="shell-alias-optional"><a class="header" href="#shell-alias-optional">Shell alias (optional)</a></h2>
+<p>For convenience, alias the binary to <code>aide.sh</code>:</p>
+<pre><code class="language-bash">echo 'alias aide.sh="aide"' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<h2 id="next"><a class="header" href="#next">Next</a></h2>
+<p>Once installed, proceed to the <a href="#quick-start">Quick Start</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="quick-start"><a class="header" href="#quick-start">Quick Start</a></h1>
+<p>Build and run your first agent in under 5 minutes.</p>
+<h2 id="1-scaffold-a-new-agent"><a class="header" href="#1-scaffold-a-new-agent">1. Scaffold a new agent</a></h2>
+<pre><code class="language-bash">$ aide.sh init school
+Created school/
+  Agentfile.toml
+  persona.md
+  skills/
+    hello.sh
+</code></pre>
+<h2 id="2-edit-the-agentfile"><a class="header" href="#2-edit-the-agentfile">2. Edit the Agentfile</a></h2>
+<p>Open <code>school/Agentfile.toml</code>. The template looks like this:</p>
+<pre><code class="language-toml">[agent]
+name = "school"
+version = "0.1.0"
+description = "My first agent"
+author = "you"
+
+[persona]
+file = "persona.md"
+
+[skills.hello]
+script = "skills/hello.sh"
+description = "Say hello"
+usage = "hello [name]"
+
+[seed]
+dir = "seed/"
+
+[env]
+required = []
+optional = []
+</code></pre>
+<p>Add a skill, change the description, or leave the defaults – it works out of the box.</p>
+<h2 id="3-build-the-image"><a class="header" href="#3-build-the-image">3. Build the image</a></h2>
+<pre><code class="language-bash">$ aide.sh build school/
+Building school v0.1.0 ...
+Image: school:0.1.0 (sha256:a3f8...)
+</code></pre>
+<p>This packages the Agentfile, persona, skills, and seed data into a compressed image stored in <code>~/.aide/images/</code>.</p>
+<h2 id="4-run-an-instance"><a class="header" href="#4-run-an-instance">4. Run an instance</a></h2>
+<pre><code class="language-bash">$ aide.sh run school --name school
+Instance "school" started (id: school)
+</code></pre>
+<h2 id="5-execute-a-skill"><a class="header" href="#5-execute-a-skill">5. Execute a skill</a></h2>
+<pre><code class="language-bash">$ aide.sh exec school hello
+Hello, world!
+
+$ aide.sh exec school hello Alice
+Hello, Alice!
+</code></pre>
+<h2 id="6-list-available-skills"><a class="header" href="#6-list-available-skills">6. List available skills</a></h2>
+<pre><code class="language-bash">$ aide.sh exec school
+Available skills:
+  hello    Say hello
+</code></pre>
+<h2 id="7-open-the-dashboard"><a class="header" href="#7-open-the-dashboard">7. Open the dashboard</a></h2>
+<pre><code class="language-bash">$ aide.sh dash
+Dashboard running at http://localhost:3939
+</code></pre>
+<p>The dashboard shows all running instances, recent logs, and skill status.</p>
+<h2 id="whats-next"><a class="header" href="#whats-next">What’s next?</a></h2>
+<ul>
+<li><a href="#concepts">Concepts</a> — understand images, instances, vault, and semantic injection</li>
+<li><a href="#agentfiletoml-reference">Agentfile.toml reference</a> — full configuration guide</li>
+<li><a href="#skills-1">Skills</a> — writing script and prompt skills</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="concepts"><a class="header" href="#concepts">Concepts</a></h1>
+<p>Core ideas behind aide.sh, mapped to Docker equivalents where applicable.</p>
+<h2 id="images-vs-instances"><a class="header" href="#images-vs-instances">Images vs Instances</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Docker</th><th>aide.sh</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Image</td><td>Image</td><td>Immutable snapshot built from Agentfile.toml</td></tr>
+<tr><td>Container</td><td>Instance</td><td>Running copy of an image with its own state</td></tr>
+<tr><td>Dockerfile</td><td>Agentfile.toml</td><td>Declarative manifest</td></tr>
+<tr><td>docker build</td><td>aide.sh build</td><td>Package into image</td></tr>
+<tr><td>docker run</td><td>aide.sh run</td><td>Create instance from image</td></tr>
+<tr><td>docker exec</td><td>aide.sh exec</td><td>Run a command inside instance</td></tr>
+</tbody>
+</table>
+</div>
+<p>Images live in <code>~/.aide/images/</code>. Instances live in <code>~/.aide/instances/</code>.</p>
+<h2 id="agentfiletoml"><a class="header" href="#agentfiletoml">Agentfile.toml</a></h2>
+<p>The manifest that defines an agent. Contains:</p>
+<ul>
+<li><strong>[agent]</strong> — name, version, description, author</li>
+<li><strong>[persona]</strong> — pointer to a markdown file describing the agent’s identity</li>
+<li><strong>[skills.NAME]</strong> — executable capabilities (scripts or prompts)</li>
+<li><strong>[seed]</strong> — static data bundled into the image</li>
+<li><strong>[env]</strong> — required and optional environment variables</li>
+<li><strong>[soul]</strong> — LLM routing preferences</li>
+</ul>
+<h2 id="skills"><a class="header" href="#skills">Skills</a></h2>
+<p>A skill is a named capability. Two types:</p>
+<ul>
+<li><strong>Script-based</strong> — a shell script (<code>skills/hello.sh</code>) that receives args via <code>$1</code>, <code>$2</code>, etc.</li>
+<li><strong>Prompt-based</strong> — a markdown file (<code>skills/summarize.md</code>) interpreted by an LLM at runtime.</li>
+</ul>
+<p>Skills are invoked with <code>aide.sh exec &lt;instance&gt; &lt;skill&gt; [args...]</code>.</p>
+<h2 id="persona"><a class="header" href="#persona">Persona</a></h2>
+<p>A markdown file that describes who the agent is. Used by LLMs when the agent runs in semantic mode. Has no effect in explicit (non-LLM) mode.</p>
+<h2 id="vault"><a class="header" href="#vault">Vault</a></h2>
+<p>Encrypted secret storage. Secrets are injected as environment variables at skill execution time. Three-tier scoping:</p>
+<ol>
+<li><strong>Per-skill env</strong> — highest priority, set in <code>[skills.NAME] env</code></li>
+<li><strong>Per-agent env</strong> — set in <code>[env]</code></li>
+<li><strong>Vault</strong> — global secrets, lowest priority</li>
+</ol>
+<p>See <a href="#vault--secrets">Vault &amp; Secrets</a> for details.</p>
+<h2 id="semantic-injection-the--p-flag"><a class="header" href="#semantic-injection-the--p-flag">Semantic injection (the <code>-p</code> flag)</a></h2>
+<p>By default, <code>aide.sh exec</code> runs skills explicitly – you name the skill and pass args.</p>
+<p>Add <code>-p</code> and the input becomes a natural language prompt routed through an LLM:</p>
+<pre><code class="language-bash"># explicit: you pick the skill and args
+aide.sh exec bot notifications
+
+# semantic: LLM picks the skill and args
+aide.sh exec -p bot "do I have new mail?"
+</code></pre>
+<p>The agent itself is unchanged. The <code>-p</code> flag wraps it with an LLM reasoning layer. Without <code>-p</code>, no LLM is involved – the human acts as the reasoning layer.</p>
+<h2 id="mcp-model-context-protocol"><a class="header" href="#mcp-model-context-protocol">MCP (Model Context Protocol)</a></h2>
+<p>MCP lets LLM hosts (Claude Code, Cursor, etc.) call aide.sh agents as tools. Running <code>aide.sh setup-mcp</code> registers your agents so that an LLM can:</p>
+<ul>
+<li>List available agents and skills</li>
+<li>Execute skills and read output</li>
+<li>Access logs</li>
+</ul>
+<p>See <a href="#mcp-integration">MCP Integration</a> for setup instructions.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="agentfiletoml-reference"><a class="header" href="#agentfiletoml-reference">Agentfile.toml Reference</a></h1>
+<p>The Agentfile is the manifest that defines an agent. It is always named <code>Agentfile.toml</code> and lives at the root of the agent directory.</p>
+<h2 id="complete-example"><a class="header" href="#complete-example">Complete example</a></h2>
+<pre><code class="language-toml">[agent]
+name = "github-reviewer"
+version = "0.1.0"
+description = "GitHub PR reviewer — diffs, notifications, code review"
+author = "demo"
+
+[persona]
+file = "persona.md"
+
+[skills.pr]
+script = "skills/pr.sh"
+description = "GitHub PR management (list, review, approve, merge)"
+usage = "pr [list|review|approve|merge|summary|diff]"
+schedule = "0 8 * * *"
+env = ["GITHUB_TOKEN"]
+
+[skills.notifications]
+script = "skills/notifications.sh"
+description = "GitHub notifications triage"
+usage = "notifications [check|unread|read N|search Q]"
+schedule = "0 */4 * * *"
+env = ["GITHUB_TOKEN"]
+
+[skills.chrome]
+script = "skills/chrome.sh"
+description = "Chrome browser automation"
+usage = "chrome [open|screenshot|scrape URL]"
+
+[seed]
+dir = "seed/"
+
+[env]
+required = ["GITHUB_TOKEN"]
+optional = []
+
+[soul]
+prefer = "claude-sonnet"
+min_params = 1
+</code></pre>
+<h2 id="sections"><a class="header" href="#sections">Sections</a></h2>
+<h3 id="agent"><a class="header" href="#agent">[agent]</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Required</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>name</td><td>yes</td><td>Agent name (lowercase, alphanumeric, hyphens)</td></tr>
+<tr><td>version</td><td>yes</td><td>Semver string</td></tr>
+<tr><td>description</td><td>yes</td><td>One-line summary</td></tr>
+<tr><td>author</td><td>no</td><td>Author name or handle</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="persona-1"><a class="header" href="#persona-1">[persona]</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Required</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>file</td><td>yes</td><td>Path to a markdown file describing the agent’s identity</td></tr>
+</tbody>
+</table>
+</div>
+<p>The persona file is used by LLMs in semantic mode (<code>-p</code>). It has no effect in explicit mode.</p>
+<h3 id="skillsname"><a class="header" href="#skillsname">[skills.NAME]</a></h3>
+<p>Each skill is a TOML table under <code>[skills]</code>.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Required</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>script</td><td>yes*</td><td>Path to shell script (mutually exclusive with <code>prompt</code>)</td></tr>
+<tr><td>prompt</td><td>yes*</td><td>Path to prompt markdown file (mutually exclusive with <code>script</code>)</td></tr>
+<tr><td>description</td><td>no</td><td>Shown in <code>aide.sh exec &lt;instance&gt;</code> skill list and <code>--help</code></td></tr>
+<tr><td>usage</td><td>no</td><td>Usage string for <code>--help</code></td></tr>
+<tr><td>schedule</td><td>no</td><td>Cron expression for periodic execution</td></tr>
+<tr><td>env</td><td>no</td><td>List of env var names this skill needs</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="seed"><a class="header" href="#seed">[seed]</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Required</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>dir</td><td>yes</td><td>Directory of static files bundled into the image</td></tr>
+</tbody>
+</table>
+</div>
+<p>Seed data is copied into the instance at <code>aide.sh run</code> time. Useful for config files, templates, or reference data.</p>
+<h3 id="env"><a class="header" href="#env">[env]</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Required</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>required</td><td>no</td><td>Env vars that must be present; <code>aide.sh run</code> will fail without them</td></tr>
+<tr><td>optional</td><td>no</td><td>Env vars that are used if available</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="soul"><a class="header" href="#soul">[soul]</a></h3>
+<p>Controls LLM behavior when the agent runs in semantic mode.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Field</th><th>Required</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>prefer</td><td>no</td><td>Preferred LLM model identifier</td></tr>
+<tr><td>min_params</td><td>no</td><td>Minimum parameters before falling back to LLM reasoning</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="validation"><a class="header" href="#validation">Validation</a></h2>
+<p>Run <code>aide.sh lint &lt;dir&gt;</code> to check an Agentfile for errors before building:</p>
+<pre><code class="language-bash">$ aide.sh lint school/
+Agentfile.toml: OK
+Skills: 3 found, all scripts exist
+Env: GITHUB_TOKEN required
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="skills-1"><a class="header" href="#skills-1">Skills</a></h1>
+<p>A skill is a named, executable capability of an agent. Skills are the primary unit of work in aide.sh.</p>
+<h2 id="script-based-skills"><a class="header" href="#script-based-skills">Script-based skills</a></h2>
+<p>The most common type. A skill backed by a shell script:</p>
+<pre><code class="language-toml">[skills.hello]
+script = "skills/hello.sh"
+description = "Greet someone"
+usage = "hello [name]"
+</code></pre>
+<p>The script receives positional arguments via <code>$1</code>, <code>$2</code>, etc:</p>
+<pre><code class="language-bash">#!/usr/bin/env bash
+# skills/hello.sh
+NAME="${1:-world}"
+echo "Hello, $NAME!"
+</code></pre>
+<pre><code class="language-bash">$ aide.sh exec bot hello Alice
+Hello, Alice!
+</code></pre>
+<h2 id="prompt-based-skills"><a class="header" href="#prompt-based-skills">Prompt-based skills</a></h2>
+<p>A skill backed by a markdown prompt file, interpreted by an LLM at runtime:</p>
+<pre><code class="language-toml">[skills.summarize]
+prompt = "skills/summarize.md"
+description = "Summarize text using an LLM"
+usage = "summarize &lt;text&gt;"
+</code></pre>
+<pre><code class="language-markdown">&lt;!-- skills/summarize.md --&gt;
+Summarize the following text in 3 bullet points:
+
+{{input}}
+</code></pre>
+<p>Prompt skills always require an LLM. They are skipped if no LLM is configured.</p>
+<h2 id="execution-model"><a class="header" href="#execution-model">Execution model</a></h2>
+<p>When <code>aide.sh exec &lt;instance&gt; &lt;skill&gt; [args]</code> runs:</p>
+<ol>
+<li>The instance working directory is set to the instance root (<code>~/.aide/instances/&lt;name&gt;/</code>)</li>
+<li>Environment variables are injected in order: vault -&gt; agent env -&gt; skill env</li>
+<li>The script runs as a subprocess with the scoped environment</li>
+<li>stdout/stderr are captured and returned to the caller</li>
+<li>Exit code is preserved (0 = success)</li>
+</ol>
+<h2 id="adding-description-and-usage"><a class="header" href="#adding-description-and-usage">Adding description and usage</a></h2>
+<p>The <code>description</code> and <code>usage</code> fields appear when listing skills:</p>
+<pre><code class="language-bash">$ aide.sh exec bot
+Available skills:
+  pr         GitHub PR management (list, review, approve, merge)
+             Usage: pr [list|review|approve|merge|summary|diff]
+  notifications  GitHub notifications triage
+             Usage: notifications [check|unread|read N|search Q]
+  chrome     Chrome browser automation
+             Usage: chrome [open|screenshot|scrape URL]
+</code></pre>
+<h2 id="example-skill-with-argument-parsing"><a class="header" href="#example-skill-with-argument-parsing">Example: skill with argument parsing</a></h2>
+<pre><code class="language-bash">#!/usr/bin/env bash
+# skills/pr.sh
+set -euo pipefail
+
+CMD="${1:-help}"
+
+case "$CMD" in
+  list)
+    curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+      "https://api.github.com/repos/${2}/pulls" | jq '.[].title'
+    ;;
+  diff)
+    curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+      "https://api.github.com/repos/${2}/pulls/${3}" | jq '.[]'
+    ;;
+  *)
+    echo "Usage: pr [list REPO|diff REPO PR_NUM|review|approve|merge|summary]"
+    exit 1
+    ;;
+esac
+</code></pre>
+<h2 id="scheduled-skills"><a class="header" href="#scheduled-skills">Scheduled skills</a></h2>
+<p>Add a <code>schedule</code> field with a cron expression to run a skill periodically:</p>
+<pre><code class="language-toml">[skills.pr]
+script = "skills/pr.sh"
+schedule = "0 8 * * *"    # daily at 8 AM
+</code></pre>
+<p>Scheduled skills require the daemon (<code>aide.sh up</code>). See <a href="#cron--scheduling">Cron &amp; Scheduling</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="vault--secrets"><a class="header" href="#vault--secrets">Vault &amp; Secrets</a></h1>
+<p>The vault is aide.sh’s encrypted secret store. Secrets are injected as environment variables at skill execution time.</p>
+<h2 id="import-from-env-file"><a class="header" href="#import-from-env-file">Import from .env file</a></h2>
+<pre><code class="language-bash">$ aide.sh vault import .env
+Imported 5 secrets from .env
+</code></pre>
+<p>The <code>.env</code> file uses standard <code>KEY=VALUE</code> format:</p>
+<pre><code>NTU_COOL_TOKEN=abc123
+SMTP_USER=user@example.com
+SMTP_PASS=hunter2
+</code></pre>
+<h2 id="set-individual-secrets"><a class="header" href="#set-individual-secrets">Set individual secrets</a></h2>
+<pre><code class="language-bash">$ aide.sh vault set NTU_COOL_TOKEN=abc123
+Set NTU_COOL_TOKEN
+
+$ aide.sh vault set SMTP_USER=user@example.com SMTP_PASS=hunter2
+Set SMTP_USER
+Set SMTP_PASS
+</code></pre>
+<h2 id="check-vault-status"><a class="header" href="#check-vault-status">Check vault status</a></h2>
+<pre><code class="language-bash">$ aide.sh vault status
+Vault: ~/.aide/vault.db (encrypted, AES-256-GCM)
+Secrets: 5 stored
+  NTU_COOL_TOKEN   set 2025-06-01
+  SMTP_USER        set 2025-06-01
+  SMTP_PASS        set 2025-06-01
+  POP3_USER        set 2025-06-01
+  POP3_PASS        set 2025-06-01
+</code></pre>
+<h2 id="rotate-encryption-key"><a class="header" href="#rotate-encryption-key">Rotate encryption key</a></h2>
+<pre><code class="language-bash">$ aide.sh vault rotate
+Vault key rotated. All secrets re-encrypted.
+</code></pre>
+<h2 id="three-tier-environment-scoping"><a class="header" href="#three-tier-environment-scoping">Three-tier environment scoping</a></h2>
+<p>When a skill runs, environment variables are resolved in this order (highest priority first):</p>
+<ol>
+<li><strong>Per-skill env</strong> — variables listed in <code>[skills.NAME] env</code></li>
+<li><strong>Per-agent env</strong> — variables listed in <code>[env] required</code> and <code>optional</code></li>
+<li><strong>Vault</strong> — global secrets available to all agents</li>
+</ol>
+<p>If the same key exists at multiple levels, the highest-priority value wins.</p>
+<pre><code class="language-toml"># Agentfile.toml
+[skills.notifications]
+script = "skills/notifications.sh"
+env = ["GITHUB_TOKEN"]             # skill-level: checked first
+
+[env]
+required = ["GITHUB_TOKEN"]        # agent-level: checked second
+optional = ["SLACK_WEBHOOK"]       # vault: checked last
+</code></pre>
+<h2 id="credential-leak-scanning"><a class="header" href="#credential-leak-scanning">Credential leak scanning</a></h2>
+<p>aide.sh scans skill output for potential secret leaks:</p>
+<pre><code class="language-bash">$ aide.sh exec bot notifications
+[warn] Potential secret detected in output (GITHUB_TOKEN pattern). Use --allow-leak to suppress.
+</code></pre>
+<p>This is a best-effort check. Always review scripts that handle sensitive data.</p>
+<h2 id="security-notes"><a class="header" href="#security-notes">Security notes</a></h2>
+<ul>
+<li>The vault database is stored at <code>~/.aide/vault.db</code></li>
+<li>Encryption uses AES-256-GCM with a key derived from your system keychain</li>
+<li>Secrets are never written to disk in plaintext</li>
+<li><code>aide.sh vault export</code> is intentionally not supported</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="cron--scheduling"><a class="header" href="#cron--scheduling">Cron &amp; Scheduling</a></h1>
+<p>Run skills on a schedule using cron expressions.</p>
+<h2 id="defining-schedules-in-agentfiletoml"><a class="header" href="#defining-schedules-in-agentfiletoml">Defining schedules in Agentfile.toml</a></h2>
+<p>Add a <code>schedule</code> field to any skill:</p>
+<pre><code class="language-toml">[skills.pr]
+script = "skills/pr.sh"
+description = "GitHub PR scanning"
+schedule = "0 8 * * *"           # daily at 8:00 AM
+
+[skills.notifications]
+script = "skills/notifications.sh"
+description = "GitHub notifications triage"
+schedule = "0 */4 * * *"         # every 4 hours
+</code></pre>
+<p>The schedule uses standard 5-field cron syntax:</p>
+<pre><code>minute  hour  day-of-month  month  day-of-week
+  0      8        *           *        *
+</code></pre>
+<h2 id="managing-schedules-at-runtime"><a class="header" href="#managing-schedules-at-runtime">Managing schedules at runtime</a></h2>
+<h3 id="list-scheduled-jobs"><a class="header" href="#list-scheduled-jobs">List scheduled jobs</a></h3>
+<pre><code class="language-bash">$ aide.sh cron ls
+INSTANCE  SKILL          SCHEDULE       NEXT RUN
+reviewer  pr             0 8 * * *      2025-06-15 08:00
+reviewer  notifications  0 */4 * * *    2025-06-15 12:00
+</code></pre>
+<h3 id="add-a-schedule"><a class="header" href="#add-a-schedule">Add a schedule</a></h3>
+<pre><code class="language-bash">$ aide.sh cron add reviewer pr "30 9 * * 1-5"
+Schedule set: reviewer/pr at 30 9 * * 1-5 (weekdays at 9:30 AM)
+</code></pre>
+<h3 id="remove-a-schedule"><a class="header" href="#remove-a-schedule">Remove a schedule</a></h3>
+<pre><code class="language-bash">$ aide.sh cron rm reviewer pr
+Schedule removed: reviewer/pr
+</code></pre>
+<h2 id="daemon-mode"><a class="header" href="#daemon-mode">Daemon mode</a></h2>
+<p>Scheduled jobs only run when the daemon is active:</p>
+<pre><code class="language-bash">$ aide.sh up
+Daemon started (PID 12345)
+Dashboard: http://localhost:3939
+Cron scheduler: active (2 jobs)
+</code></pre>
+<p>Without the daemon, schedules defined in Agentfile.toml are stored but not executed.</p>
+<p>To stop the daemon:</p>
+<pre><code class="language-bash">$ aide.sh down
+Daemon stopped.
+</code></pre>
+<h2 id="viewing-cron-status-in-the-dashboard"><a class="header" href="#viewing-cron-status-in-the-dashboard">Viewing cron status in the dashboard</a></h2>
+<p>The dashboard at <code>http://localhost:3939</code> shows a cron panel with:</p>
+<ul>
+<li>All scheduled jobs across all instances</li>
+<li>Next scheduled run time</li>
+<li>Last execution result (exit code, duration, truncated output)</li>
+<li>Execution history (last 10 runs per job)</li>
+</ul>
+<h2 id="cron-output-and-logs"><a class="header" href="#cron-output-and-logs">Cron output and logs</a></h2>
+<p>Cron job output is captured in the instance log:</p>
+<pre><code class="language-bash">$ aide.sh logs reviewer --filter cron
+[2025-06-14 08:00:01] cron/pr: 3 open PRs, 2 need review
+[2025-06-14 12:00:01] cron/notifications: 5 unread notifications
+</code></pre>
+<p>Failed jobs (non-zero exit code) are flagged in the dashboard and logs.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="mcp-integration"><a class="header" href="#mcp-integration">MCP Integration</a></h1>
+<p>MCP (Model Context Protocol) lets LLM hosts like Claude Code, Cursor, and Gemini call aide.sh agents as tools. Your agents become subagents that any LLM can orchestrate.</p>
+<h2 id="what-is-mcp"><a class="header" href="#what-is-mcp">What is MCP?</a></h2>
+<p>MCP is a standard protocol for LLMs to discover and invoke external tools. aide.sh implements an MCP server that exposes your running agents as tools.</p>
+<h2 id="auto-configure-for-claude-code"><a class="header" href="#auto-configure-for-claude-code">Auto-configure for Claude Code</a></h2>
+<pre><code class="language-bash">$ aide.sh setup-mcp
+Detected: Claude Code
+Wrote MCP config to ~/.claude/settings.json
+Registered tools: aide_list, aide_exec, aide_logs
+</code></pre>
+<p>This adds aide.sh as an MCP server in your Claude Code configuration.</p>
+<h2 id="manual-setup"><a class="header" href="#manual-setup">Manual setup</a></h2>
+<p>Add the following to your Claude Code <code>settings.json</code> or equivalent MCP config:</p>
+<pre><code class="language-json">{
+  "mcpServers": {
+    "aide": {
+      "command": "aide",
+      "args": ["mcp-serve"]
+    }
+  }
+}
+</code></pre>
+<p>For Cursor, add to <code>.cursor/mcp.json</code>:</p>
+<pre><code class="language-json">{
+  "mcpServers": {
+    "aide": {
+      "command": "aide",
+      "args": ["mcp-serve"]
+    }
+  }
+}
+</code></pre>
+<h2 id="available-mcp-tools"><a class="header" href="#available-mcp-tools">Available MCP tools</a></h2>
+<p>Once configured, the LLM host sees these tools:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Tool</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>aide_list</code></td><td>List all running instances and their skills</td></tr>
+<tr><td><code>aide_exec</code></td><td>Execute a skill on a running instance</td></tr>
+<tr><td><code>aide_logs</code></td><td>Retrieve recent logs for an instance</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="example-claude-code-calling-an-agent"><a class="header" href="#example-claude-code-calling-an-agent">Example: Claude Code calling an agent</a></h2>
+<p>After setup, Claude Code can use your agents directly:</p>
+<pre><code>User: "Check if I have any PRs to review"
+
+Claude: I'll check your GitHub PRs.
+        [calling aide_exec: instance="reviewer", skill="pr", args=["list"]]
+
+        You have 2 PRs awaiting review:
+        - Fix auth middleware: PR #42 by alice
+        - Add pagination: PR #58 by bob
+</code></pre>
+<p>The LLM discovers available skills via <code>aide_list</code>, picks the right one, and calls <code>aide_exec</code>.</p>
+<h2 id="running-the-mcp-server-manually"><a class="header" href="#running-the-mcp-server-manually">Running the MCP server manually</a></h2>
+<pre><code class="language-bash">$ aide mcp-serve
+MCP server listening on stdio
+</code></pre>
+<p>This is what <code>setup-mcp</code> configures to run automatically. You rarely need to invoke it directly.</p>
+<h2 id="debugging"><a class="header" href="#debugging">Debugging</a></h2>
+<p>Check that instances are running:</p>
+<pre><code class="language-bash">$ aide.sh ps
+NAME      IMAGE                  STATUS
+reviewer  github-reviewer:0.1.0  running
+</code></pre>
+<p>Test a skill works before expecting MCP to use it:</p>
+<pre><code class="language-bash">$ aide.sh exec reviewer pr list
+</code></pre>
+<p>If the skill works via <code>exec</code> but not via MCP, check the MCP server logs:</p>
+<pre><code class="language-bash">$ aide.sh logs --mcp
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="dashboard-1"><a class="header" href="#dashboard-1">Dashboard</a></h1>
+<p>aide.sh includes a built-in web dashboard for monitoring agents.</p>
+<p><img src="images/dash-demo.png" alt="aide.sh dashboard"></p>
+<h2 id="quick-start-1"><a class="header" href="#quick-start-1">Quick start</a></h2>
+<pre><code class="language-bash">aide.sh dash                  # standalone dashboard
+aide.sh up                    # daemon + cron + dashboard
+aide.sh up --no-dash          # daemon without dashboard
+</code></pre>
+<p>Dashboard serves at <code>http://localhost:3939</code>.</p>
+<h2 id="panels"><a class="header" href="#panels">Panels</a></h2>
+<ul>
+<li><strong>Instances</strong> — sidebar listing all agents with status dots (green = active)</li>
+<li><strong>Skills</strong> — table with name, description, cron schedule, env vars</li>
+<li><strong>Cron Jobs</strong> — schedule, skill name, last run time</li>
+<li><strong>Usage</strong> — per-skill execution bars with success/fail ratio, CLI vs MCP breakdown</li>
+<li><strong>Logs</strong> — real-time log tail with auto-refresh (3s polling)</li>
+</ul>
+<h2 id="api"><a class="header" href="#api">API</a></h2>
+<pre><code class="language-bash"># List all instances
+curl http://localhost:3939/api/instances
+
+# Instance detail (skills, cron, metadata)
+curl http://localhost:3939/api/instance/reviewer.demo
+
+# Logs (latest N lines)
+curl http://localhost:3939/api/logs/reviewer.demo?tail=50
+
+# Usage analytics
+curl http://localhost:3939/api/stats/reviewer.demo
+</code></pre>
+<h2 id="stats-response"><a class="header" href="#stats-response">Stats response</a></h2>
+<pre><code class="language-json">{
+  "total_execs": 12,
+  "by_skill": {
+    "pr": { "count": 9, "success": 9, "fail": 0 },
+    "notifications": { "count": 1, "success": 1, "fail": 0 }
+  },
+  "by_source": { "cli": 12, "mcp": 0 }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="expose-email--pwa"><a class="header" href="#expose-email--pwa">Expose (Email / PWA)</a></h1>
+<p>Give your agents an address so anyone can talk to them — no terminal required.</p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Channel</th><th>Address</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Email</strong></td><td><code>agent+user@aide.sh</code></td><td>Planned</td></tr>
+<tr><td><strong>PWA</strong></td><td><code>app.aide.sh/instance</code></td><td>Planned</td></tr>
+</tbody>
+</table>
+</div>
+<p>Both channels are platform-controlled — aide.sh manages the infra, not third-party APIs.</p>
+<h2 id="email-gateway-planned"><a class="header" href="#email-gateway-planned">Email Gateway (planned)</a></h2>
+<p>Every agent gets an email address:</p>
+<pre><code>reviewer+demo@aide.sh
+</code></pre>
+<h3 id="how-it-works-1"><a class="header" href="#how-it-works-1">How it works</a></h3>
+<ol>
+<li>Anyone sends an email to <code>reviewer+demo@aide.sh</code></li>
+<li>Cloudflare Email Worker receives the message</li>
+<li>Routes to agent: <code>aide.sh exec -p reviewer.demo "&lt;email body&gt;"</code></li>
+<li>Agent runs matching skills</li>
+<li>Reply sent back via Resend/SMTP</li>
+</ol>
+<h3 id="why-email"><a class="header" href="#why-email">Why email</a></h3>
+<ul>
+<li><strong>Zero install</strong> — everyone already has an email client</li>
+<li><strong>Mobile native</strong> — works in any phone’s mail app</li>
+<li><strong>We control it</strong> — aide.sh domain, our routing, no third-party bot limits</li>
+</ul>
+<h2 id="pwa-planned"><a class="header" href="#pwa-planned">PWA (planned)</a></h2>
+<p>A chat interface at <code>app.aide.sh</code>:</p>
+<pre><code>app.aide.sh/reviewer.demo → chat UI → WebSocket → aide.sh exec
+</code></pre>
+<h3 id="features"><a class="header" href="#features">Features</a></h3>
+<ul>
+<li>Real-time chat with your agents</li>
+<li>Works on iOS, Android, Desktop (Add to Home Screen)</li>
+<li>Push notifications via Service Worker</li>
+<li>No App Store required</li>
+</ul>
+<h2 id="self-hosted-integrations"><a class="header" href="#self-hosted-integrations">Self-hosted integrations</a></h2>
+<p>Power users can integrate their agents with any messaging platform using
+the MCP server or direct <code>aide.sh exec</code> calls:</p>
+<pre><code class="language-bash"># Your own Telegram bot
+your-telegram-bot → aide.sh exec -p reviewer.demo "message"
+
+# Your own Discord bot
+your-discord-bot → aide.sh exec -p reviewer.demo "message"
+
+# Any webhook
+curl -X POST your-server/agent -d "message" → aide.sh exec
+</code></pre>
+<p>The MCP server (<code>aide.sh mcp</code>) is the recommended integration point for
+LLM-based callers. For simple message-in/message-out, shell out to <code>aide.sh exec</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aidesh-run"><a class="header" href="#aidesh-run">aide.sh run</a></h1>
+<p>Create and start an agent instance from an image.</p>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<pre><code>aide.sh run &lt;IMAGE&gt; [--name NAME] [-d]
+</code></pre>
+<p><strong>IMAGE</strong> can be:</p>
+<ul>
+<li>A local agent type defined in <code>aide.toml</code> (e.g. <code>reviewer</code>)</li>
+<li>A registry reference in <code>&lt;user&gt;/&lt;type&gt;</code> format (e.g. <code>aide/github-reviewer</code>)</li>
+</ul>
+<h2 id="options"><a class="header" href="#options">Options</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Flag</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>--name NAME</code></td><td>Set instance name (default: <code>&lt;type&gt;.&lt;user&gt;</code>)</td></tr>
+<tr><td><code>-d, --detach</code></td><td>Run in background (default for agents)</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<pre><code class="language-bash">aide.sh run reviewer                       # local type from aide.toml
+aide.sh run aide/github-reviewer           # pull from registry, then run
+aide.sh run aide/github-reviewer --name reviewer
+</code></pre>
+<h2 id="what-happens"><a class="header" href="#what-happens">What happens</a></h2>
+<ol>
+<li>Resolves the image: local <code>aide.toml</code> definition or registry pull (<code>&lt;user&gt;/&lt;type&gt;</code> format).</li>
+<li>Derives instance name. Default is <code>&lt;type&gt;.&lt;USER&gt;</code> where <code>$USER</code> comes from the environment.</li>
+<li>Creates the instance directory under <code>~/.aide/instances/&lt;name&gt;/</code> with subdirectories <code>memory/</code> and <code>logs/</code>.</li>
+<li>Copies <code>persona.md</code> from the agent type if one exists.</li>
+<li>Writes <code>instance.toml</code> manifest (name, type, email, role, domains, cron entries, creation timestamp).</li>
+<li>Sets up cron schedules declared in the Agentfile.</li>
+</ol>
+<h2 id="instance-directory-layout"><a class="header" href="#instance-directory-layout">Instance directory layout</a></h2>
+<pre><code>~/.aide/instances/&lt;name&gt;/
+  instance.toml     # manifest
+  persona.md        # copied from agent type
+  Agentfile.toml    # agent package spec
+  skills/           # executable skill scripts
+  seed/             # read-only knowledge files
+  memory/           # writable state
+  logs/             # daily log files
+</code></pre>
+<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
+<ul>
+<li>If the instance name already exists, the command fails with a message suggesting <code>aide rm &lt;name&gt;</code> first.</li>
+<li>If the image is a registry reference that has not been pulled, it is pulled automatically.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aidesh-exec"><a class="header" href="#aidesh-exec">aide.sh exec</a></h1>
+<p>Execute a skill on a running agent instance.</p>
+<h2 id="usage-1"><a class="header" href="#usage-1">Usage</a></h2>
+<pre><code>aide.sh exec [FLAGS] &lt;INSTANCE&gt; [SKILL] [ARGS...]
+</code></pre>
+<p>When called without a skill, lists all available skills for the instance (equivalent to <code>--help</code>).</p>
+<h2 id="options-1"><a class="header" href="#options-1">Options</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Flag</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>-i, --interactive</code></td><td>Interactive mode (allocate pseudo-TTY)</td></tr>
+<tr><td><code>-t, --tty</code></td><td>Allocate pseudo-TTY</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="examples-1"><a class="header" href="#examples-1">Examples</a></h2>
+<pre><code class="language-bash">aide.sh exec reviewer.demo                   # list available skills
+aide.sh exec reviewer.demo pr list           # run the "pr" skill with arg "list"
+aide.sh exec reviewer.demo notifications     # check notifications
+aide.sh exec -it reviewer.demo diff          # interactive mode
+</code></pre>
+<h2 id="skill-resolution"><a class="header" href="#skill-resolution">Skill resolution</a></h2>
+<ol>
+<li>Looks up the instance under <code>~/.aide/instances/&lt;instance&gt;/</code>.</li>
+<li>Loads <code>Agentfile.toml</code> from the instance directory.</li>
+<li>Finds the skill definition and locates the script at <code>skills/&lt;skill&gt;.sh</code>.</li>
+<li>Executes the script via <code>bash</code>, passing remaining arguments.</li>
+</ol>
+<h2 id="environment-scoping"><a class="header" href="#environment-scoping">Environment scoping</a></h2>
+<p>Secrets from the vault (<code>~/.aide/vault.age</code>) are injected with a tiered scoping model:</p>
+<ol>
+<li><strong>Per-skill env</strong> – If the skill declares its own <code>env</code> list in the Agentfile, only those variables are injected.</li>
+<li><strong>Per-agent env</strong> – Otherwise, variables from the <code>[env]</code> section (<code>required</code> + <code>optional</code>) are injected.</li>
+<li><strong>No Agentfile</strong> – Legacy mode: all vault variables are injected.</li>
+</ol>
+<h2 id="smart-error-messages"><a class="header" href="#smart-error-messages">Smart error messages</a></h2>
+<p>If you pass a registry-style image reference (e.g. <code>aide/github-reviewer</code>) instead of an instance name, the command suggests running <code>aide.sh pull</code> and <code>aide.sh run</code> first.</p>
+<h2 id="help-output"><a class="header" href="#help-output">Help output</a></h2>
+<p>Running <code>aide.sh exec &lt;instance&gt;</code> with no skill prints:</p>
+<ul>
+<li>Instance name, agent type, and version</li>
+<li>Each skill with its usage string and description</li>
+<li>Per-skill env var requirements</li>
+<li>A hint about semantic mode (<code>aide.sh exec -p &lt;instance&gt; "&lt;query&gt;"</code>)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aidesh-build--push--pull"><a class="header" href="#aidesh-build--push--pull">aide.sh build / push / pull</a></h1>
+<p>Build, publish, and fetch agent images.</p>
+<h2 id="aidesh-build"><a class="header" href="#aidesh-build">aide.sh build</a></h2>
+<p>Build an agent image from an Agentfile.</p>
+<pre><code>aide.sh build [PATH] [-t TAG]
+</code></pre>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Flag</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>PATH</code></td><td>Directory containing <code>Agentfile.toml</code> (default: <code>.</code>)</td></tr>
+<tr><td><code>-t, --tag TAG</code></td><td>Tag the image (<code>name:version</code>)</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="build-process"><a class="header" href="#build-process">Build process</a></h3>
+<ol>
+<li><strong>Parse</strong> – Loads and parses <code>Agentfile.toml</code>.</li>
+<li><strong>Validate</strong> – Checks that all referenced files exist (persona, skill scripts, prompt files, seed directory).</li>
+<li><strong>Lint</strong> – Runs the full lint suite including credential leak scanning.</li>
+<li><strong>Collect</strong> – Gathers all files: <code>Agentfile.toml</code>, persona, skill scripts/prompts, and seed directory contents.</li>
+<li><strong>Archive</strong> – Creates <code>&lt;name&gt;-&lt;version&gt;.tar.gz</code>.</li>
+<li><strong>Checksum</strong> – Computes SHA-256 of the archive.</li>
+</ol>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<pre><code class="language-bash">aide.sh build agents/reviewer/
+aide.sh build . -t github-reviewer:0.2.0
+</code></pre>
+<h2 id="aidesh-push"><a class="header" href="#aidesh-push">aide.sh push</a></h2>
+<p>Push a built agent image to the registry.</p>
+<pre><code>aide.sh push [IMAGE]
+</code></pre>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Flag</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>IMAGE</code></td><td>Directory or image name to push (default: <code>.</code>)</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="push-process"><a class="header" href="#push-process">Push process</a></h3>
+<ol>
+<li>Builds the image (same as <code>aide.sh build</code>).</li>
+<li>Reads registry credentials from the vault (<code>AIDE_REGISTRY_TOKEN</code>).</li>
+<li>Uploads the <code>.tar.gz</code> archive to <code>hub.aide.sh</code>.</li>
+</ol>
+<p>Requires prior authentication via <code>aide.sh login</code>.</p>
+<h2 id="aidesh-pull"><a class="header" href="#aidesh-pull">aide.sh pull</a></h2>
+<p>Download an agent image from the registry.</p>
+<pre><code>aide.sh pull &lt;USER&gt;/&lt;TYPE&gt;[:VERSION]
+</code></pre>
+<h3 id="pull-process"><a class="header" href="#pull-process">Pull process</a></h3>
+<ol>
+<li>Resolves the image reference. Version defaults to <code>latest</code>.</li>
+<li>Downloads the archive from <code>hub.aide.sh</code>.</li>
+<li>Extracts to <code>~/.aide/types/&lt;user&gt;/&lt;type&gt;/</code>.</li>
+</ol>
+<h3 id="example-1"><a class="header" href="#example-1">Example</a></h3>
+<pre><code class="language-bash">aide.sh pull aide/github-reviewer
+aide.sh pull aide/github-reviewer:0.1.0
+</code></pre>
+<h2 id="related-commands"><a class="header" href="#related-commands">Related commands</a></h2>
+<ul>
+<li><code>aide.sh images</code> – List locally available agent images.</li>
+<li><code>aide.sh search &lt;query&gt;</code> – Search the registry.</li>
+<li><code>aide.sh login</code> – Authenticate with the registry.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aidesh-init--lint"><a class="header" href="#aidesh-init--lint">aide.sh init / lint</a></h1>
+<p>Scaffold and validate agent projects.</p>
+<h2 id="aidesh-init"><a class="header" href="#aidesh-init">aide.sh init</a></h2>
+<p>Generate a new agent project skeleton.</p>
+<pre><code>aide.sh init &lt;NAME&gt;
+</code></pre>
+<p>Creates a directory <code>&lt;NAME&gt;/</code> with:</p>
+<pre><code>&lt;NAME&gt;/
+  Agentfile.toml      # pre-filled manifest with TODO placeholders
+  persona.md           # starter persona template
+  skills/hello.sh      # sample executable skill script
+  seed/.gitkeep        # empty seed directory
+</code></pre>
+<p>The generated <code>Agentfile.toml</code> includes a complete example with <code>[agent]</code>, <code>[persona]</code>, <code>[skills.hello]</code>, <code>[seed]</code>, and <code>[env]</code> sections. The hello skill is already executable (<code>chmod 755</code>).</p>
+<h3 id="example-2"><a class="header" href="#example-2">Example</a></h3>
+<pre><code class="language-bash">aide.sh init my-agent
+cd my-agent
+aide.sh lint              # validate the scaffold
+aide.sh exec . hello      # run the sample skill
+</code></pre>
+<p>Fails if the directory already exists.</p>
+<h2 id="aidesh-lint"><a class="header" href="#aidesh-lint">aide.sh lint</a></h2>
+<p>Validate an Agentfile.toml and its referenced files.</p>
+<pre><code>aide.sh lint [PATH]
+</code></pre>
+<p><code>PATH</code> defaults to the current directory.</p>
+<h3 id="checks-performed"><a class="header" href="#checks-performed">Checks performed</a></h3>
+<p><strong>Errors</strong> (block build/push):</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>#</th><th>Check</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><code>Agentfile.toml</code> parses as valid TOML</td></tr>
+<tr><td>2</td><td><code>agent.name</code> is non-empty</td></tr>
+<tr><td>3</td><td><code>agent.version</code> is non-empty</td></tr>
+<tr><td>4</td><td><code>agent.description</code> is present and not a TODO placeholder</td></tr>
+<tr><td>5</td><td><code>agent.author</code> is present and not a TODO placeholder</td></tr>
+<tr><td>6</td><td>Each skill has either <code>script</code> or <code>prompt</code>, not both, not neither</td></tr>
+<tr><td>7</td><td>Referenced script files exist</td></tr>
+<tr><td>8</td><td>Script files are executable (<code>chmod +x</code>)</td></tr>
+<tr><td>9</td><td>Referenced prompt files exist</td></tr>
+<tr><td>10</td><td>Cron schedule expressions are valid (5-field format)</td></tr>
+<tr><td>11</td><td>No credential leaks detected (scans for <code>sk-ant-</code>, <code>sk-proj-</code>, <code>AKIA</code>, <code>ghp_</code>, <code>gho_</code>, <code>eyJhbG</code>, <code>-----BEGIN</code>)</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Warnings</strong> (informational):</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>#</th><th>Check</th></tr>
+</thead>
+<tbody>
+<tr><td>12</td><td>Skill missing <code>description</code></td></tr>
+<tr><td>13</td><td>Skill missing <code>usage</code></td></tr>
+<tr><td>14</td><td>Seed directory declared but not found</td></tr>
+<tr><td>15</td><td>Skills reference env vars but no <code>[env]</code> section exists</td></tr>
+<tr><td>16</td><td>Per-skill env var not listed in <code>[env].required</code> or <code>[env].optional</code></td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="example-output"><a class="header" href="#example-output">Example output</a></h3>
+<pre><code>$ aide.sh lint
+[pass] Agentfile.toml parsed
+[pass] agent.name = "github-reviewer"
+[pass] agent.version = "0.1.0"
+[pass] agent.description present
+[pass] agent.author present
+[pass] skills/pr.sh exists (executable)
+[warn] skills.chrome: missing usage
+[fail] skills/draft.sh: not executable
+1 warning(s), 1 error(s)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aidesh-mcp--setup-mcp"><a class="header" href="#aidesh-mcp--setup-mcp">aide.sh mcp / setup-mcp</a></h1>
+<p>MCP (Model Context Protocol) server for LLM tool integration.</p>
+<h2 id="aidesh-mcp"><a class="header" href="#aidesh-mcp">aide.sh mcp</a></h2>
+<p>Start the MCP stdio server.</p>
+<pre><code>aide.sh mcp
+</code></pre>
+<p>Reads newline-delimited JSON-RPC 2.0 messages from stdin and writes responses to stdout. This is not meant to be called directly – it is invoked by an MCP-capable LLM client (e.g. Claude Code).</p>
+<h3 id="protocol"><a class="header" href="#protocol">Protocol</a></h3>
+<ul>
+<li><strong>Transport</strong>: stdio (stdin/stdout), newline-delimited JSON</li>
+<li><strong>Protocol version</strong>: <code>2024-11-05</code></li>
+<li><strong>Server info</strong>: <code>aide.sh</code> v0.1.0</li>
+</ul>
+<h3 id="tool-schemas"><a class="header" href="#tool-schemas">Tool schemas</a></h3>
+<p><strong>aide_list</strong> – List all running agent instances and their available skills.</p>
+<pre><code class="language-json">{
+  "name": "aide_list",
+  "inputSchema": { "type": "object", "properties": {} }
+}
+</code></pre>
+<p>Returns instance names, types, status, email, and per-instance skill list with type (script/prompt) and description.</p>
+<p><strong>aide_exec</strong> – Execute a skill on an agent instance.</p>
+<pre><code class="language-json">{
+  "name": "aide_exec",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "instance": { "type": "string" },
+      "skill": { "type": "string" },
+      "args": { "type": "string" }
+    },
+    "required": ["instance", "skill"]
+  }
+}
+</code></pre>
+<p>Runs the skill script, applies env scoping from the vault, logs the invocation, and returns stdout/stderr.</p>
+<p><strong>aide_logs</strong> – Read recent logs from an agent instance.</p>
+<pre><code class="language-json">{
+  "name": "aide_logs",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "instance": { "type": "string" },
+      "lines": { "type": "number" }
+    },
+    "required": ["instance"]
+  }
+}
+</code></pre>
+<p>Returns the last N log lines (default 50).</p>
+<h2 id="aidesh-setup-mcp"><a class="header" href="#aidesh-setup-mcp">aide.sh setup-mcp</a></h2>
+<p>Auto-configure MCP integration for a target client.</p>
+<pre><code>aide.sh setup-mcp [TARGET]
+</code></pre>
+<p><code>TARGET</code> defaults to <code>claude</code>. Writes the MCP server configuration so that the client can discover and call <code>aide.sh mcp</code> automatically.</p>
+<p>For Claude Code, this updates <code>~/.claude/claude_desktop_config.json</code> (or equivalent) with the aide.sh MCP server entry.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aidesh-dash"><a class="header" href="#aidesh-dash">aide.sh dash</a></h1>
+<p>Open the agent observability dashboard.</p>
+<h2 id="usage-2"><a class="header" href="#usage-2">Usage</a></h2>
+<pre><code>aide.sh dash [-p PORT]
+</code></pre>
+<h2 id="options-2"><a class="header" href="#options-2">Options</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Flag</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>-p, --port PORT</code></td><td>Port to serve on (default: <code>3939</code>)</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="description"><a class="header" href="#description">Description</a></h2>
+<p>Starts a local HTTP server serving a web UI for monitoring agent instances. The dashboard provides a read-only view of instance status, skills, cron schedules, and logs.</p>
+<p>Static assets are embedded in the binary via <code>rust_embed</code>.</p>
+<h2 id="api-endpoints"><a class="header" href="#api-endpoints">API endpoints</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Method</th><th>Path</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>GET</td><td><code>/</code></td><td>Dashboard web UI (index.html)</td></tr>
+<tr><td>GET</td><td><code>/api/instances</code></td><td>List all instances with status, type, email, role, cron count, last activity</td></tr>
+<tr><td>GET</td><td><code>/api/instance/{name}</code></td><td>Instance detail: metadata, version, description, author, skills, cron entries</td></tr>
+<tr><td>GET</td><td><code>/api/logs/{name}?tail=N</code></td><td>Recent log lines for an instance (default tail: 100)</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="response-examples"><a class="header" href="#response-examples">Response examples</a></h3>
+<p><strong>GET /api/instances</strong></p>
+<pre><code class="language-json">{
+  "instances": [
+    {
+      "name": "reviewer.demo",
+      "agent_type": "reviewer",
+      "status": "active",
+      "email": "reviewer@aide.sh",
+      "role": "GitHub PR reviewer",
+      "cron_count": 2,
+      "last_activity": "[08:00:01] diff completed"
+    }
+  ]
+}
+</code></pre>
+<p><strong>GET /api/logs/reviewer.demo?tail=5</strong></p>
+<pre><code class="language-json">{
+  "logs": [
+    "[08:00:01] cron: diff",
+    "[08:00:03] diff completed",
+    "[12:00:01] cron: notifications",
+    "[12:00:05] notifications completed",
+    "[14:32:10] mcp-exec: pr list"
+  ]
+}
+</code></pre>
+<h2 id="integration-with-aidesh-up"><a class="header" href="#integration-with-aidesh-up">Integration with aide.sh up</a></h2>
+<p>When running <code>aide.sh up</code>, the dashboard is spawned as a background task within the daemon unless <code>--no-dash</code> is passed.</p>
+<pre><code class="language-bash">aide.sh up              # starts daemon + dashboard on port 3939
+aide.sh up --no-dash    # starts daemon without dashboard
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="aidesh-mount--unmount"><a class="header" href="#aidesh-mount--unmount">aide.sh mount / unmount</a></h1>
+<p>Inject agent context into LLM coding tools.</p>
+<h2 id="usage-3"><a class="header" href="#usage-3">Usage</a></h2>
+<pre><code>aide.sh mount &lt;INSTANCE&gt; &lt;TARGET&gt;
+aide.sh unmount &lt;INSTANCE&gt; &lt;TARGET&gt;
+</code></pre>
+<p><strong>TARGET</strong> is one of: <code>claude</code>, <code>codex</code>, <code>gemini</code>, <code>all</code>.</p>
+<h2 id="what-gets-injected"><a class="header" href="#what-gets-injected">What gets injected</a></h2>
+<p>The mount command gathers content from the instance directory and writes it as a single markdown document:</p>
+<ol>
+<li><strong>Instance metadata</strong> – agent type, email, role, cron schedules (from <code>instance.toml</code>).</li>
+<li><strong>Persona</strong> – contents of <code>persona.md</code>.</li>
+<li><strong>Seed knowledge</strong> – all <code>.md</code> files under <code>seed/</code>.</li>
+<li><strong>Memory</strong> – all <code>.md</code> files under <code>memory/</code>.</li>
+</ol>
+<p>Each section is separated by a horizontal rule. The file is marked with <code>&lt;!-- aide-mount --&gt;</code> so it can be cleanly removed on unmount.</p>
+<h2 id="target-claude"><a class="header" href="#target-claude">Target: claude</a></h2>
+<p>Writes to <code>~/.claude/projects/&lt;cwd-key&gt;/memory/aide_&lt;instance&gt;.md</code>.</p>
+<p>The CWD is encoded as a path key (slashes replaced with dashes). If a <code>MEMORY.md</code> index file exists in that directory, an entry is appended under an <code>## Aide Agents</code> section.</p>
+<pre><code class="language-bash">aide.sh mount reviewer.demo claude
+# -&gt; ~/.claude/projects/-Users-demo-projects-myapp/memory/aide_reviewer.demo.md
+</code></pre>
+<h2 id="target-codex"><a class="header" href="#target-codex">Target: codex</a></h2>
+<p>Writes to <code>./AGENTS.md</code> in the current working directory.</p>
+<p>If <code>AGENTS.md</code> already exists with non-aide content, the agent context is appended after a separator. On unmount, only the aide-marked section is removed.</p>
+<h2 id="target-gemini"><a class="header" href="#target-gemini">Target: gemini</a></h2>
+<p>Writes to <code>./GEMINI.md</code> in the current working directory.</p>
+<p>Same append/remove behavior as the codex target.</p>
+<h2 id="target-all"><a class="header" href="#target-all">Target: all</a></h2>
+<p>Mounts (or unmounts) to all three targets at once.</p>
+<h2 id="examples-2"><a class="header" href="#examples-2">Examples</a></h2>
+<pre><code class="language-bash">aide.sh mount reviewer.demo claude
+aide.sh mount reviewer.demo all
+aide.sh unmount reviewer.demo codex
+aide.sh unmount reviewer.demo all
+</code></pre>
+<h2 id="unmount-behavior"><a class="header" href="#unmount-behavior">Unmount behavior</a></h2>
+<ul>
+<li><strong>claude</strong>: Deletes <code>aide_&lt;instance&gt;.md</code> and removes the index entry from <code>MEMORY.md</code>.</li>
+<li><strong>codex</strong>: Removes the aide-marked section from <code>AGENTS.md</code>. Deletes the file if no other content remains.</li>
+<li><strong>gemini</strong>: Same as codex, targeting <code>GEMINI.md</code>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="agent-hub"><a class="header" href="#agent-hub">Agent Hub</a></h1>
+<p>Pull, run, done.</p>
+<pre><code class="language-bash">aide.sh pull aide/devops
+aide.sh run aide/devops --name mybot
+aide.sh exec mybot check-uptime
+</code></pre>
+<h2 id="available-agents"><a class="header" href="#available-agents">Available Agents</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th><th>Source</th><th>License</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>aide/code-review</strong></td><td>Plan, review, QA, ship</td><td><a href="https://github.com/garrytan/gstack">garrytan/gstack</a></td><td>MIT</td></tr>
+<tr><td><strong>aide/context</strong></td><td>API docs for coding agents</td><td><a href="https://github.com/andrewyng/context-hub">andrewyng/context-hub</a></td><td>MIT</td></tr>
+<tr><td><strong>aide/devops</strong></td><td>Uptime, incidents, log analysis</td><td>community</td><td>MIT</td></tr>
+<tr><td><strong>aide/ntu-student</strong></td><td>University LMS + mail</td><td><a href="https://github.com/yiidtw/aide">yiidtw/aide</a></td><td>MIT</td></tr>
+<tr><td><strong>aide/weather</strong></td><td>Forecast + severe alerts</td><td>community</td><td>MIT</td></tr>
+<tr><td><strong>aide/qa</strong></td><td>Test, regression, coverage</td><td>community</td><td>MIT</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="publish-your-agent"><a class="header" href="#publish-your-agent">Publish Your Agent</a></h2>
+<pre><code class="language-bash">aide.sh login                    # GitHub OAuth
+aide.sh build my-agent/          # package
+aide.sh push my-agent/           # publish to hub
+</code></pre>
+<p>Your agent will be available as <code>your-username/agent-name</code>.</p>
+<h2 id="build-your-own"><a class="header" href="#build-your-own">Build Your Own</a></h2>
+<pre><code class="language-bash">aide.sh init my-agent            # scaffold
+# edit Agentfile.toml + skills/
+aide.sh lint my-agent/           # validate
+aide.sh build my-agent/          # package
+</code></pre>
+<p>See <a href="#agentfiletoml-reference">Agentfile.toml reference</a> for the full spec.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="architecture-the-soul-model"><a class="header" href="#architecture-the-soul-model">Architecture: The Soul Model</a></h1>
+<p>An aide.sh agent does not own its LLM. The caller brings the intelligence.</p>
+<h2 id="core-insight"><a class="header" href="#core-insight">Core insight</a></h2>
+<p>In Docker, a container does not own the CPU. The host provides compute at runtime. aide.sh applies the same principle to AI agents: the agent defines skills, persona, and memory, but the LLM that powers reasoning is provided externally.</p>
+<p>This means an agent can run in three modes without changing its definition:</p>
+<h2 id="three-caller-modes"><a class="header" href="#three-caller-modes">Three caller modes</a></h2>
+<h3 id="1-mcp-mode-frontier"><a class="header" href="#1-mcp-mode-frontier">1. MCP mode (frontier)</a></h3>
+<p>An MCP-capable client (e.g. Claude Code) calls into the agent via <code>aide.sh mcp</code>. The LLM lives on the client side. The agent’s skills run as tools the LLM can invoke.</p>
+<p>This is the highest-capability mode. The caller’s frontier model handles reasoning, planning, and natural language understanding. The agent provides domain-specific actions.</p>
+<h3 id="2-terminal-mode-no-llm"><a class="header" href="#2-terminal-mode-no-llm">2. Terminal mode (no LLM)</a></h3>
+<p>A human runs <code>aide.sh exec &lt;instance&gt; &lt;skill&gt; [args]</code> directly. No LLM is involved. The skill script executes and returns output. The human is the intelligence layer.</p>
+<p>This is the zero-dependency mode. Every agent works here, regardless of whether an LLM is available.</p>
+<h3 id="3-daemon-mode-local-model"><a class="header" href="#3-daemon-mode-local-model">3. Daemon mode (local model)</a></h3>
+<p>The <code>aide.sh up</code> daemon runs scheduled tasks using a local model via Ollama. The <code>[soul]</code> section in <code>Agentfile.toml</code> declares preferences:</p>
+<pre><code class="language-toml">[soul]
+prefer = "llama3.2:3b"
+min_params = "1b"
+</code></pre>
+<ul>
+<li><code>prefer</code> – the preferred local model identifier.</li>
+<li><code>min_params</code> – minimum model size the agent needs.</li>
+</ul>
+<p>The daemon selects the best available model that meets the requirement.</p>
+<h2 id="docker-analogy"><a class="header" href="#docker-analogy">Docker analogy</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Docker</th><th>aide.sh</th></tr>
+</thead>
+<tbody>
+<tr><td>Container does not own CPU</td><td>Agent does not own LLM</td></tr>
+<tr><td>Host provides compute</td><td>Caller provides intelligence</td></tr>
+<tr><td>Works on any host with Docker</td><td>Works with any LLM (or none)</td></tr>
+<tr><td>CPU is a runtime resource</td><td>LLM is a runtime resource</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="design-consequence"><a class="header" href="#design-consequence">Design consequence</a></h2>
+<p>Because the LLM is external, agent packages are small and deterministic. A skill is a bash script. A persona is a markdown file. There are no model weights, no inference servers, no GPU requirements in the agent image.</p>
+<p>The same agent image that a frontier model orchestrates via MCP can also be operated by a human typing commands in a terminal.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="architecture-agent-execution-modes"><a class="header" href="#architecture-agent-execution-modes">Architecture: Agent Execution Modes</a></h1>
+<p>aide.sh agents have three execution modes. Same agent, same skills — different brains.</p>
+<h2 id="three-modes"><a class="header" href="#three-modes">Three Modes</a></h2>
+<h3 id="1-ad-hoc-no-llm"><a class="header" href="#1-ad-hoc-no-llm">1. Ad-hoc (no LLM)</a></h3>
+<pre><code class="language-bash">aide.sh exec school pr list
+aide.sh exec school notifications
+</code></pre>
+<p>Human directly calls a skill by name. Script runs, output returns. No AI involved.
+This is like calling a Docker container’s command directly.</p>
+<h3 id="2-sub-agent-callers-llm"><a class="header" href="#2-sub-agent-callers-llm">2. Sub-agent (caller’s LLM)</a></h3>
+<pre><code>Claude Code / Codex / Gemini
+  └── MCP: aide_exec(school, pr, list)
+</code></pre>
+<p>A frontier CLI model controls the agent via MCP. The caller’s LLM decides what
+skills to invoke. The agent doesn’t need its own brain — the caller IS the brain.</p>
+<h3 id="3-standalone-agent-has-its-own-llm"><a class="header" href="#3-standalone-agent-has-its-own-llm">3. Standalone (agent has its own LLM)</a></h3>
+<pre><code class="language-bash">aide.sh exec -p school "what's due this week?"
+</code></pre>
+<p>The <code>-p</code> flag gives the agent a soul. The query is piped through an LLM
+(<code>claude -p</code> or local ollama) which reads the persona, examines available skills,
+and autonomously decides what to call.</p>
+<pre><code>human → LLM (claude -p / ollama) → selects skill → executes → LLM → human
+</code></pre>
+<h2 id="how--p-works"><a class="header" href="#how--p-works">How <code>-p</code> works</a></h2>
+<ol>
+<li>Reads <code>persona.md</code> — who the agent is</li>
+<li>Reads skill catalog — what it can do (names, descriptions, usage)</li>
+<li>Composes a prompt: “Given these skills, answer this query”</li>
+<li>LLM selects skill + args</li>
+<li>aide.sh executes the skill</li>
+<li>LLM formats the output for the human</li>
+</ol>
+<h2 id="llm-resolution-order"><a class="header" href="#llm-resolution-order">LLM Resolution Order</a></h2>
+<p>When <code>-p</code> is used, aide.sh looks for an LLM in this order:</p>
+<ol>
+<li><code>claude -p</code> — if Claude Code CLI is installed</li>
+<li><code>ollama</code> — if a local model is available</li>
+<li><code>[soul]</code> section in Agentfile.toml — preferred model hint</li>
+</ol>
+<pre><code class="language-toml">[soul]
+prefer = "llama3.2:3b"
+</code></pre>
+<h2 id="comparison"><a class="header" href="#comparison">Comparison</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th>Ad-hoc</th><th>Sub-agent</th><th>Standalone</th></tr>
+</thead>
+<tbody>
+<tr><td>Who decides</td><td>Human</td><td>Caller’s LLM</td><td>Agent’s LLM</td></tr>
+<tr><td>Trigger</td><td><code>aide.sh exec</code></td><td>MCP <code>aide_exec</code></td><td><code>aide.sh exec -p</code></td></tr>
+<tr><td>LLM needed</td><td>No</td><td>Caller has it</td><td>Yes (claude/ollama)</td></tr>
+<tr><td>Offline</td><td>Yes</td><td>No</td><td>Depends on LLM</td></tr>
+<tr><td>Use case</td><td>Scripts, cron, CI</td><td>Claude Code workflows</td><td>Chat, email, Telegram</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="why-this-matters"><a class="header" href="#why-this-matters">Why this matters</a></h2>
+<p><strong>LLM is a runtime, not a dependency.</strong> An agent that works in ad-hoc mode will
+always work — on any machine, offline, without API keys. The <code>-p</code> flag and MCP
+are enhancements, not requirements.</p>
+<p>This is the opposite of frameworks where the LLM is baked into the agent. In aide.sh,
+the agent is a set of capabilities. The LLM — whether frontier or local — is an
+optional brain that makes those capabilities accessible via natural language.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="architecture-docker-comparison"><a class="header" href="#architecture-docker-comparison">Architecture: Docker Comparison</a></h1>
+<p>aide.sh follows Docker’s conceptual model, applied to AI agents instead of application containers.</p>
+<h2 id="command-mapping"><a class="header" href="#command-mapping">Command mapping</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Docker</th><th>aide.sh</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>Dockerfile</code></td><td><code>Agentfile.toml</code></td><td>Package definition</td></tr>
+<tr><td><code>docker build</code></td><td><code>aide.sh build</code></td><td>Create distributable image</td></tr>
+<tr><td><code>docker run</code></td><td><code>aide.sh run</code></td><td>Create and start an instance</td></tr>
+<tr><td><code>docker exec</code></td><td><code>aide.sh exec</code></td><td>Run a command inside an instance</td></tr>
+<tr><td><code>docker ps</code></td><td><code>aide.sh ps</code></td><td>List running instances</td></tr>
+<tr><td><code>docker stop</code></td><td><code>aide.sh stop</code></td><td>Stop an instance</td></tr>
+<tr><td><code>docker rm</code></td><td><code>aide.sh rm</code></td><td>Remove an instance</td></tr>
+<tr><td><code>docker logs</code></td><td><code>aide.sh logs</code></td><td>View instance logs</td></tr>
+<tr><td><code>docker inspect</code></td><td><code>aide.sh inspect</code></td><td>Detailed instance metadata</td></tr>
+<tr><td><code>docker push</code></td><td><code>aide.sh push</code></td><td>Upload image to registry</td></tr>
+<tr><td><code>docker pull</code></td><td><code>aide.sh pull</code></td><td>Download image from registry</td></tr>
+<tr><td><code>docker images</code></td><td><code>aide.sh images</code></td><td>List local images</td></tr>
+<tr><td><code>docker search</code></td><td><code>aide.sh search</code></td><td>Search the registry</td></tr>
+<tr><td><code>docker login</code></td><td><code>aide.sh login</code></td><td>Authenticate with registry</td></tr>
+<tr><td>Docker Hub</td><td>hub.aide.sh</td><td>Public registry</td></tr>
+<tr><td>Docker Desktop</td><td><code>aide.sh dash</code></td><td>GUI dashboard</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="concept-mapping"><a class="header" href="#concept-mapping">Concept mapping</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Docker concept</th><th>aide.sh equivalent</th><th>Notes</th></tr>
+</thead>
+<tbody>
+<tr><td>Image</td><td>Agent type</td><td>Immutable package: Agentfile + skills + persona + seed</td></tr>
+<tr><td>Container</td><td>Instance</td><td>Running agent with its own memory and logs</td></tr>
+<tr><td>Volumes</td><td><code>memory/</code> + <code>seed/</code></td><td><code>seed/</code> is read-only; <code>memory/</code> is read-write</td></tr>
+<tr><td>Secrets</td><td>Vault (<code>~/.aide/vault.age</code>)</td><td>Age-encrypted, scoped per-agent and per-skill</td></tr>
+<tr><td>Entrypoint</td><td>Skills (script or prompt)</td><td>Each skill is an independent entry point</td></tr>
+<tr><td>ENV</td><td><code>[env]</code> section</td><td>Declares required/optional secrets</td></tr>
+<tr><td>Registry</td><td>hub.aide.sh</td><td>Push/pull agent images</td></tr>
+<tr><td>Compose</td><td><code>aide.toml</code></td><td>Multi-agent configuration</td></tr>
+<tr><td>Daemon</td><td><code>aide.sh up</code></td><td>Background process for cron + dashboard</td></tr>
+<tr><td>CPU/RAM</td><td>LLM</td><td>Runtime resource provided by caller, not owned by agent</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="key-differences"><a class="header" href="#key-differences">Key differences</a></h2>
+<p><strong>Multiple entry points.</strong> A Docker container has one entrypoint. An aide.sh instance has many skills, each independently callable.</p>
+<p><strong>External compute.</strong> Docker containers own their process. aide.sh agents do not own their LLM – it is provided by the caller (MCP client, terminal user, or local Ollama).</p>
+<p><strong>Cross-tool mounting.</strong> Docker volumes mount filesystems. <code>aide.sh mount</code> injects agent context into LLM tools (Claude Code, Codex, Gemini) as markdown files.</p>
+<p><strong>Deterministic packages.</strong> Agent images contain only scripts and markdown. No model weights, no runtime binaries, no language-specific dependencies. A typical image is kilobytes, not gigabytes.</p>
+<h2 id="lifecycle-comparison"><a class="header" href="#lifecycle-comparison">Lifecycle comparison</a></h2>
+<pre><code>Docker:   build -&gt; push -&gt; pull -&gt; run -&gt; exec -&gt; stop -&gt; rm
+aide.sh:  build -&gt; push -&gt; pull -&gt; run -&gt; exec -&gt; stop -&gt; rm
+</code></pre>
+<p>The lifecycle is intentionally identical. If you know Docker, you know aide.sh.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="architecture-git-native-agent-methodology"><a class="header" href="#architecture-git-native-agent-methodology">Architecture: Git-Native Agent Methodology</a></h1>
+<p>Every aide.sh agent is a git repo. Every interaction is a git operation.</p>
+<h2 id="the-repo-is-the-agent"><a class="header" href="#the-repo-is-the-agent">The Repo IS the Agent</a></h2>
+<pre><code>my-agent/
+├── Agentfile.toml          # manifest (like Dockerfile)
+├── persona.md              # personality + behavior rules
+├── skills/*.sh             # executable capabilities
+├── memory/                 # persistent memory (git tracked)
+│   ├── context.md          # current working context
+│   ├── decisions.md        # past decisions + reasoning
+│   └── contacts.md         # people/systems the agent knows
+├── seed/                   # initial knowledge
+└── .github/
+    └── workflows/
+        └── agent.yml       # webhook: issue → exec → comment
+</code></pre>
+<h2 id="github-issues--agent-inbox"><a class="header" href="#github-issues--agent-inbox">GitHub Issues = Agent Inbox</a></h2>
+<pre><code>You open an issue:        "check my grades this semester"
+  → GitHub webhook fires
+  → GitHub Action runs:   aide exec school cool grades
+  → Action comments:      "Here are your grades: ..."
+  → You get a notification
+  → You reply:            "also check if any assignments are due"
+  → Webhook fires again
+  → Agent responds in comments
+</code></pre>
+<p>No custom UI. No polling. No KV limits. GitHub IS the interface.</p>
+<h2 id="why-git"><a class="header" href="#why-git">Why Git</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Concern</th><th>Git solution</th></tr>
+</thead>
+<tbody>
+<tr><td>Memory persistence</td><td>Files in repo, versioned</td></tr>
+<tr><td>Memory sync across machines</td><td><code>git pull</code></td></tr>
+<tr><td>Audit trail</td><td><code>git log</code></td></tr>
+<tr><td>Collaboration</td><td>Pull requests</td></tr>
+<tr><td>Rollback</td><td><code>git revert</code></td></tr>
+<tr><td>Branching experiments</td><td><code>git branch</code></td></tr>
+<tr><td>Access control</td><td>Repo permissions</td></tr>
+<tr><td>Notifications</td><td>GitHub notifications + email</td></tr>
+<tr><td>Mobile access</td><td>GitHub mobile app</td></tr>
+<tr><td>API</td><td>GitHub REST/GraphQL API</td></tr>
+<tr><td>CI/CD</td><td>GitHub Actions (free for public repos)</td></tr>
+<tr><td>Migration</td><td>Move to GitLab/Gitea, same structure</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="three-interface-layers"><a class="header" href="#three-interface-layers">Three Interface Layers</a></h2>
+<pre><code>Layer 1: CLI (local)
+  aide exec school cool courses          # direct skill call
+  aide exec -p school "what's due?"      # LLM-assisted
+
+Layer 2: MCP (LLM-driven)
+  Claude Code → aide_exec(school, cool)  # sub-agent mode
+
+Layer 3: GitHub Issues (async, remote)
+  Open issue → webhook → exec → comment  # event-driven
+</code></pre>
+<p>All three layers use the same agent, same skills, same memory. The interface changes, the agent doesn’t.</p>
+<h2 id="memory-is-just-files"><a class="header" href="#memory-is-just-files">Memory is Just Files</a></h2>
+<p>No database. No KV store. No special API.</p>
+<pre><code class="language-markdown">&lt;!-- memory/context.md --&gt;
+# Current Context
+
+- Semester: 2026 Spring
+- Courses: 4 (ML, SoCV, VLSI, Seminar)
+- Next deadline: ML HW3 (2026-03-25)
+- Last scan: 2026-03-18 07:00
+</code></pre>
+<p>Agent writes to memory files. Git tracks changes. <code>git log memory/</code> shows how the agent’s understanding evolved over time.</p>
+<h2 id="webhook-handler-template"><a class="header" href="#webhook-handler-template">Webhook Handler Template</a></h2>
+<pre><code class="language-yaml"># .github/workflows/agent.yml
+name: Agent
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: agent-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  respond:
+    runs-on: ubuntu-latest
+    # Only respond to allowed users, never to bot's own comments
+    if: |
+      (github.event_name == 'issue_comment' &amp;&amp;
+       github.event.comment.user.login != 'github-actions[bot]' &amp;&amp;
+       contains(fromJSON('["owner-username"]'), github.event.comment.user.login)) ||
+      (github.event_name == 'issues' &amp;&amp;
+       contains(fromJSON('["owner-username"]'), github.event.issue.user.login))
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install aide
+        run: |
+          VERSION="0.4.0"
+          curl -sL -o "$HOME/.local/bin/aide" \
+            "https://github.com/yiidtw/aide/releases/download/v${VERSION}/aide-$(uname -m)-unknown-linux-gnu"
+          chmod +x "$HOME/.local/bin/aide"
+
+      - name: Run agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export PATH="$HOME/.local/bin:$PATH"
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            BODY="${{ github.event.comment.body }}"
+          else
+            BODY="${{ github.event.issue.body }}"
+          fi
+          ISSUE="${{ github.event.issue.number }}"
+
+          RESULT=$(aide exec -p agent "$BODY" 2&gt;&amp;1 || echo "Agent error")
+          gh issue comment "$ISSUE" --body "$RESULT"
+
+      - name: Commit memory changes
+        run: |
+          git config user.name "agent[bot]"
+          git config user.email "agent@aide.sh"
+          git pull --rebase || true
+          git add memory/ || true
+          git diff --cached --quiet || git commit -m "memory: updated by agent (issue #${{ github.event.issue.number }})"
+          git push || true
+</code></pre>
+<h2 id="security-considerations"><a class="header" href="#security-considerations">Security Considerations</a></h2>
+<ul>
+<li><strong>Access control</strong>: The <code>if</code> condition restricts which users can trigger the agent. Replace <code>owner-username</code> with your GitHub username. Without this, anyone who can open issues triggers your agent.</li>
+<li><strong>Secrets</strong>: API keys go in GitHub repo Settings → Secrets, not in memory files. Memory files should never contain credentials.</li>
+<li><strong>Self-trigger prevention</strong>: The bot check (<code>github-actions[bot]</code>) prevents infinite comment loops.</li>
+<li><strong>Concurrency</strong>: The <code>concurrency</code> group ensures only one run per issue at a time, preventing git push conflicts.</li>
+<li><strong>Version pinning</strong>: aide is installed from a pinned release version, not <code>curl | bash</code>, to prevent supply-chain attacks.</li>
+<li><strong>Private repos</strong>: GitHub Actions free tier gives 2000 minutes/month for private repos. Public repos are unlimited.</li>
+<li><strong>Memory encryption</strong>: For sensitive data, encrypt memory files before committing (e.g., <code>age</code> encryption, same as aide vault).</li>
+</ul>
+<h2 id="no-vendor-lock-in"><a class="header" href="#no-vendor-lock-in">No Vendor Lock-in</a></h2>
+<p>The entire system is portable:</p>
+<ul>
+<li><strong>GitHub → GitLab</strong>: Change webhook URL, same workflow syntax</li>
+<li><strong>GitHub → Gitea</strong>: Self-hosted, same git structure</li>
+<li><strong>GitHub → bare git</strong>: Use git hooks instead of Actions</li>
+</ul>
+<p>The agent definition (Agentfile + skills + memory) is platform-agnostic. Only the webhook handler changes.</p>
+<h2 id="trade-offs"><a class="header" href="#trade-offs">Trade-offs</a></h2>
+<h3 id="what-git-native-is-good-at"><a class="header" href="#what-git-native-is-good-at">What git-native is good at</a></h3>
+<ul>
+<li><strong>Simplicity</strong>: no database, no server, no custom UI to maintain</li>
+<li><strong>Portability</strong>: move to any git host, same structure</li>
+<li><strong>Auditability</strong>: every agent action is a git commit</li>
+<li><strong>Collaboration</strong>: PRs to review agent behavior changes</li>
+<li><strong>Cost</strong>: free for public repos on GitHub</li>
+</ul>
+<h3 id="what-git-native-is-not-good-at"><a class="header" href="#what-git-native-is-not-good-at">What git-native is NOT good at</a></h3>
+<ul>
+<li><strong>Latency</strong>: GitHub Actions cold-start is ~30-60 seconds. Not suitable for real-time chat.</li>
+<li><strong>Structured queries</strong>: <code>git log</code> is not a database. Complex queries over memory are hard.</li>
+<li><strong>Scale</strong>: thousands of concurrent issues would strain Actions runners.</li>
+<li><strong>Always-on</strong>: agents wake on events, not continuously running. Use <code>aide up</code> daemon for cron/polling.</li>
+</ul>
+<h3 id="when-to-use-what"><a class="header" href="#when-to-use-what">When to use what</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Use case</th><th>Best approach</th></tr>
+</thead>
+<tbody>
+<tr><td>Async tasks (email triage, reports)</td><td>Git-native (issues)</td></tr>
+<tr><td>Real-time chat</td><td><code>aide up</code> daemon + Telegram/email</td></tr>
+<tr><td>CI/CD automation</td><td>Git-native (PR events)</td></tr>
+<tr><td>Monitoring + alerting</td><td><code>aide up</code> daemon (cron)</td></tr>
+<tr><td>Interactive development</td><td>CLI (<code>aide exec</code>) or MCP</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="comparison-1"><a class="header" href="#comparison-1">Comparison</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th>aide.sh (git-native)</th><th>Paperclip</th><th>OpenClaw</th></tr>
+</thead>
+<tbody>
+<tr><td>Interface</td><td>GitHub Issues</td><td>Custom UI</td><td>Telegram/Slack</td></tr>
+<tr><td>Memory</td><td>Git files</td><td>PostgreSQL</td><td>SQLite</td></tr>
+<tr><td>Latency</td><td>~30-60s (Actions)</td><td>Instant (server)</td><td>Instant (daemon)</td></tr>
+<tr><td>Scale</td><td>Per-repo limits</td><td>Horizontal</td><td>Single machine</td></tr>
+<tr><td>Orchestration</td><td>company.toml</td><td>Org charts + budgets</td><td>Single agent</td></tr>
+<tr><td>Sync</td><td>git pull</td><td>DB replication</td><td>Manual</td></tr>
+<tr><td>Migration</td><td>Change git remote</td><td>Re-deploy stack</td><td>Re-configure</td></tr>
+<tr><td>Cost (public)</td><td>Free</td><td>Self-host infra</td><td>Self-host infra</td></tr>
+<tr><td>Cost (private)</td><td>2000 min/mo</td><td>Self-host infra</td><td>Self-host infra</td></tr>
+<tr><td>Mobile</td><td>GitHub app</td><td>None built-in</td><td>Telegram app</td></tr>
+</tbody>
+</table>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
