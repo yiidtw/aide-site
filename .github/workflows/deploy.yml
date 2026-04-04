@@ -19,7 +19,7 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/yiidtw/aide.git /tmp/aide
           cd /tmp/aide && mdbook build docs
-          cp -r /tmp/aide/docs/book public/docs
+          cp -r /tmp/aide/docs/book $GITHUB_WORKSPACE/public/docs
 
       - name: Setup Node
         uses: actions/setup-node@v4
