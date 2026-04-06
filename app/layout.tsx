@@ -8,12 +8,12 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "aide.sh — Deploy AI agents, just like Docker",
+  title: "aide.sh — One file to agentize your Claude project",
   description:
-    "Package, deploy, and manage AI agents with Agentfile. Isolated credentials, public registry, Docker-style CLI.",
+    "Drop an Aidefile into any Claude Code project. Budget, vault, hooks, triggers. Fire and forget.",
   openGraph: {
-    title: "aide.sh — Deploy AI agents, just like Docker",
-    description: "Package, deploy, and manage AI agents with Agentfile.",
+    title: "aide.sh — One file to agentize your Claude project",
+    description: "Drop an Aidefile into any Claude Code project. Budget, vault, hooks, triggers. Fire and forget.",
     url: "https://aide.sh",
   },
 };
