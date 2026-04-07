@@ -1,3 +1,6 @@
 {
-  "cleanUrls": false
+  "rewrites": [
+    { "source": "/docs", "destination": "https://yiidtw.github.io/aide/" },
+    { "source": "/docs/:path*", "destination": "https://yiidtw.github.io/aide/:path*" }
+  ]
 }
