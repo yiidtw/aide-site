@@ -1,5 +1,11 @@
 {
-  "rewrites": [
-    { "source": "/docs", "destination": "/docs/index.html" }
+  "redirects": [
+    { "source": "/docs", "destination": "/docs/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/docs/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    }
   ]
 }
