@@ -14,11 +14,9 @@ export default function Home() {
       {/* Hero */}
       <section className="flex flex-col items-center text-center pt-24 pb-16 px-6">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight max-w-3xl leading-[1.1]">
-          One file to
+          One file to <span className="text-emerald-400">agentize</span>
           <br />
-          <span className="text-emerald-400">agentize</span> your
-          <br />
-          Claude project.
+          your Claude project.
         </h1>
         <p className="mt-6 text-lg text-zinc-400 max-w-xl font-mono">
           Drop an Aidefile into any Claude Code project.
