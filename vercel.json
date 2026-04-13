@@ -1,8 +1,8 @@
 {
   "trailingSlash": true,
   "rewrites": [
-    { "source": "/docs/", "destination": "https://yiidtw.github.io/aide/" },
-    { "source": "/docs/:path*/", "destination": "https://yiidtw.github.io/aide/:path*/" },
-    { "source": "/docs/:path*", "destination": "https://yiidtw.github.io/aide/:path*" }
+    { "source": "/docs/", "destination": "https://aide-docs.pages.dev/" },
+    { "source": "/docs/:path*/", "destination": "https://aide-docs.pages.dev/:path*/" },
+    { "source": "/docs/:path*", "destination": "https://aide-docs.pages.dev/:path*" }
   ]
 }
