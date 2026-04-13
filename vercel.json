@@ -2,7 +2,13 @@
   "trailingSlash": true,
   "rewrites": [
     { "source": "/docs/", "destination": "https://aide-docs.pages.dev/" },
-    { "source": "/docs/:path*/", "destination": "https://aide-docs.pages.dev/:path*/" },
+    { "source": "/docs/:path*/", "destination": "https://aide-docs.pages.dev/:path*" },
     { "source": "/docs/:path*", "destination": "https://aide-docs.pages.dev/:path*" }
+  ],
+  "redirects": [
+    { "source": "/getting-started/:path*", "destination": "/docs/getting-started/:path*", "permanent": false },
+    { "source": "/commands/:path*", "destination": "/docs/commands/:path*", "permanent": false },
+    { "source": "/guide/:path*", "destination": "/docs/guide/:path*", "permanent": false },
+    { "source": "/arch/:path*", "destination": "/docs/arch/:path*", "permanent": false }
   ]
 }
