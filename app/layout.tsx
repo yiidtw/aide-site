@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const mono = Geist_Mono({
@@ -27,6 +28,14 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${mono.variable} antialiased bg-black text-white`}>
         {children}
+        <Script
+          src="/tip.js"
+          data-wallet="0x9C461A35FB6F48698E559Db402e9b0f5d08c1979"
+          data-amounts="1,2,5"
+          data-theme="dark"
+          data-label="Tip"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
