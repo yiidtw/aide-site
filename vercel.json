@@ -1,14 +1,10 @@
 {
   "trailingSlash": true,
-  "rewrites": [
-    { "source": "/docs/", "destination": "https://aide-docs.pages.dev/" },
-    { "source": "/docs/:path*/", "destination": "https://aide-docs.pages.dev/:path*" },
-    { "source": "/docs/:path*", "destination": "https://aide-docs.pages.dev/:path*" }
-  ],
   "redirects": [
-    { "source": "/getting-started/(.*)", "destination": "/docs/getting-started/$1", "permanent": false },
-    { "source": "/commands/(.*)", "destination": "/docs/commands/$1", "permanent": false },
-    { "source": "/guide/(.*)", "destination": "/docs/guide/$1", "permanent": false },
-    { "source": "/arch/(.*)", "destination": "/docs/arch/$1", "permanent": false }
+    { "source": "/docs/(.*)", "destination": "https://docs.aide.sh/$1", "permanent": false },
+    { "source": "/getting-started/(.*)", "destination": "https://docs.aide.sh/getting-started/$1", "permanent": false },
+    { "source": "/commands/(.*)", "destination": "https://docs.aide.sh/commands/$1", "permanent": false },
+    { "source": "/guide/(.*)", "destination": "https://docs.aide.sh/guide/$1", "permanent": false },
+    { "source": "/arch/(.*)", "destination": "https://docs.aide.sh/arch/$1", "permanent": false }
   ]
 }
